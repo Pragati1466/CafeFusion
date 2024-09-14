@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal - youtube.com/@codingnepal -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Website | CodingNepal</title>
+  <!-- Swiper JS CSS Link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <!-- FontAwesome Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header & Navbar Section -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="#" class="nav-logo">
+        <h2 class="logo-text">Coffee</h2>
+      </a>
+
+      <ul class="nav-menu">
+        <i id="close-menu-button" class="fa-solid fa-xmark"></i>
+        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+        <li class="nav-item"><a href="#testimonial" class="nav-link">Testimonial</a></li>
+        <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
+      </ul>
+
+      <i id="open-menu-button" class="fa-solid fa-bars"></i>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="section-container">
+      <div class="hero-container">
+        <div class="hero-details">
+          <h2 class="hero-title">Best Coffee</h2>
+          <h3 class="hero-subtitle">Make your day great with our special coffee!</h3>
+          <p class="hero-description">Welcome to our coffee paradise, where every bean tells a story and every cup sparks joy.</p>
+
+          <div class="hero-buttons">
+            <button class="button order-now-button">Order Now</button>
+            <button class="button contact-us-button">Contact Us</button>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper">
+          <img src="images/istockphoto-1467199060-612x612.jpg" alt="Coffee" class="hero-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- About Us Section -->
+<section class="about-us" id="about">
+  <div class="section-container">
+    <div class="about-container">
+      <div class="about-image-wrapper">
+        <!-- Add your image here -->
+        <img src="images/image.png" alt="About Us" class="about-image">
+      </div>
+
+      <div class="about-text-wrapper">
+        <h2 class="section-title">About Us</h2>
+        <p class="about-description">
+          At Coffee House in Berndorf, Germany, we’re your go-to spot 
+          for delightful coffee and great conversations. Our cozy 
+          environment, premium coffee blends, and tasty 
+          pastries make us a favorite among locals and visitors alike.
+          Join us for a warm, welcoming experience and become part of
+          our coffee-loving community.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Special Event/Seasonal Offers Section -->
+<section class="special-offers" id="special-offers">
+  <h2 class="section-title">Special Event/Seasonal Offers</h2>
+  <div class="offers-container">
+    <div class="offer-item" id="diwali-offer">
+      <img src="images/diwali.png" alt="Diwali Offer" class="offer-image">
+      <h3 class="offer-title">Diwali Special</h3>
+      <p class="offer-description">Celebrate Diwali with 20% off on our exclusive products!</p>
+    </div>
+    <div class="offer-item" id="christmas-offer">
+      <img src="images/christmas.png" alt="Christmas Offer" class="offer-image">
+      <h3 class="offer-title">Christmas Special</h3>
+      <p class="offer-description">Enjoy Christmas with a 25% discount on all items!</p>
+    </div>
+    <div class="offer-item" id="newyear-offer">
+      <img src="images/newyear.png" alt="New Year Offer" class="offer-image">
+      <h3 class="offer-title">New Year's Offer</h3>
+      <p class="offer-description">Ring in the new year with a flat 30% discount!</p>
+    </div>
+    <div class="offer-item" id="holi-offer">
+      <img src="images/holi.png" alt="Holi Offer" class="offer-image">
+      <h3 class="offer-title">Holi Special</h3>
+      <p class="offer-description">Celebrate Holi with 15% off on colorful products!</p>
+    </div>
+    <div class="offer-item" id="rakhi-offer">
+      <img src="images/rakhi.png" alt="Raksha Bandhan Offer" class="offer-image">
+      <h3 class="offer-title">Raksha Bandhan Special</h3>
+      <p class="offer-description">Surprise your siblings with a special Rakhi discount of 10%!</p>
+    </div>
+  </div>
+</section>
+
+<!-- Live Coffee Order Tracker Section -->
+<section class="order-tracker" id="order-tracker">
+  <h2 class="section-title">Track Your Coffee Order</h2>
+  <div class="tracker-container">
+    <div class="tracker-progress">
+      <div class="tracker-step" id="step-preparation">
+        <span class="tracker-label">Preparation</span>
+        <div class="tracker-icon"><i class="fa-solid fa-coffee"></i></div>
+      </div>
+      <div class="tracker-step" id="step-brewing">
+        <span class="tracker-label">Brewing</span>
+        <div class="tracker-icon"><i class="fa-solid fa-mug-hot"></i></div>
+      </div>
+      <div class="tracker-step" id="step-delivery">
+        <span class="tracker-label">Delivery</span>
+        <div class="tracker-icon"><i class="fa-solid fa-truck"></i></div>
+      </div>
+    </div>
+    <div class="tracker-status" id="tracker-status">
+      <!-- Status will be updated dynamically here -->
+    </div>
+  </div>
+</section>
+
+  <!-- Our Menu Section -->
+  <section class="menu-section" id="menu">
+    <h2 class="section-title">Our Menu</h2>
+    <div class="section-container">
+      <div class="menu-container">
+        <div class="menu-items">
+          <img src="images/1.png" alt="Hot Beverages" class="menu-image">
+          <div class="menu-text">
+            <h3 class="menu-heading">Hot Beverages</h3>
+            <p class="menu-description">Wide range of Steaming hot coffee to make you fresh and light.</p>
+          </div>
+        </div>
+        <div class="menu-items">
+          <img src="images/2.png" alt="Cold Beverages" class="menu-image">
+          <div class="menu-text">
+            <h3 class="menu-heading">Cold Beverages</h3>
+            <p class="menu-description">Creamy and frothy cold coffee to make you cool.</p>
+          </div>
+        </div>
+        <div class="menu-items">
+          <img src="images/3.png" alt="Refreshment" class="menu-image">
+          <div class="menu-text">
+            <h3 class="menu-heading">Refreshment</h3>
+            <p class="menu-description">Fruit and icy refreshing drink to make feel refresh.</p>
+          </div>
+        </div>
+        <div class="menu-items">
+          <img src="images/4.png" alt="Special Combos" class="menu-image">
+          <div class="menu-text">
+            <h3 class="menu-heading">Special Combos</h3>
+            <p class="menu-description">Your favorite eating and drinking combations</p>
+          </div>
+        </div>
+        <div class="menu-items">
+          <img src="images/5.png" alt="Dessert" class="menu-image">
+          <div class="menu-text">
+            <h3 class="menu-heading">Dessert</h3>
+            <p class="menu-description">Satiate your palate and take you on a culinary treat.</p>
+          </div>
+        </div>
+        <div class="menu-items">
+          <img src="images/6.png" alt="burger & French Fries" class="menu-image">
+          <div class="menu-text">
+            <h3 class="menu-heading">Burger & French Fries</h3>
+            <p class="menu-description">Quick bites to satisfy your small size hunger.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="testimonial" id="testimonial">
+    <h2 class="section-title">Testimonial</h2>
+    <div class="section-container">
+      <div class="testimonial-container swiper">
+        <div class="slide-wrapper">
+          <div class="card-list swiper-wrapper">
+            <div class="card-item swiper-slide">
+              <img src="images/p1.png" alt="User" class="user-image">
+              <h3 class="user-name">Sarah Johnson</h3>
+              <p class="user-thoughts">"Loved the French roast. Perfectly balanced and rich. Will order again!"</p>
+            </div>
+
+            <div class="card-item swiper-slide">
+              <img src="images/p2.png" alt="User" class="user-image">
+              <h3 class="user-name">James Wilson</h3>
+              <p class="user-thoughts">"Great espresso blend! Smooth and bold flavor. Fast shipping too!"</p>
+            </div>
+
+            <div class="card-item swiper-slide">
+              <img src="images/p3.png" alt="User" class="user-image">
+              <h3 class="user-name">Michael Brown</h3>
+              <p class="user-thoughts">"Fantastic mocha flavor. Fresh and aromatic. Quick shipping!"</p>
+            </div>
+
+            <div class="card-item swiper-slide">
+              <img src="images/p4.png" alt="User" class="user-image">
+              <h3 class="user-name">Emily Harris</h3>
+              <p class="user-thoughts">"Excellent quality! Fresh beans and quick delivery. Highly recommend."</p>
+            </div>
+
+            <div class="card-item swiper-slide">
+              <img src="images/p5.png" alt="User" class="user-image">
+              <h3 class="user-name">Anthony Thompson</h3>
+              <p class="user-thoughts">"Best decaf I've tried! Smooth and flavorful. Arrived promptly."</p>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-slider-btn swiper-button-prev"></div>
+          <div class="swiper-slider-btn swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <div class="section-container">
+      <div class="gallery-list">
+        <div class="gallery-items">
+          <img src="images/g1.png" alt="Gallery Image" class="gallery-image">
+        </div>
+        <div class="gallery-items">
+          <img src="images/g2.png" alt="Gallery Image" class="gallery-image">
+        </div>
+        <div class="gallery-items">
+          <img src="images/g3.png" alt="Gallery Image" class="gallery-image">
+        </div>
+        <div class="gallery-items">
+          <img src="images/g4.png" alt="Gallery Image" class="gallery-image">
+        </div>
+        <div class="gallery-items">
+          <img src="images/g5.png" alt="Gallery Image" class="gallery-image">
+        </div>
+        <div class="gallery-items">
+          <img src="images/g6.png" alt="Gallery Image" class="gallery-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Subscription Section -->
+<section class="subscription" id="subscription">
+  <h2 class="section-title">Subscription Plans</h2>
+  <div class="section-container">
+    <div class="subscription-container">
+      <!-- Weekly Subscription -->
+      <div class="subscription-plan">
+        <h3 class="plan-title">Weekly Subscription</h3>
+        <p class="plan-price">₹299 / week</p>
+        <p class="plan-description">Receive freshly roasted coffee beans every week.</p>
+        <button class="button subscribe-button">Subscribe Now</button>
+      </div>
+
+      <!-- Monthly Subscription -->
+      <div class="subscription-plan">
+        <h3 class="plan-title">Monthly Subscription</h3>
+        <p class="plan-price">₹999 / month</p>
+        <p class="plan-description">Get special brews delivered to your doorstep every month.</p>
+        <button class="button subscribe-button">Subscribe Now</button>
+      </div>
+
+      <!-- Yearly Subscription (with discount) -->
+      <div class="subscription-plan">
+        <h3 class="plan-title">Yearly Subscription</h3>
+        <p class="plan-price">₹11,499 / year (Save 20%)</p>
+        <p class="plan-description">Enjoy fresh coffee all year long with an exclusive discount!</p>
+        <button class="button subscribe-button">Subscribe Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="section-container">
+      <div class="contact-container">
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <p>123 Campsite Avenue, Wilderness, CA 98765</p>
+          </div>
+          <div class="contact-item">
+            <i class="fa-regular fa-envelope"></i>
+            <p>info@coffeeshopwebsite.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <p>(123) 456-78909</p>
+          </div>
+          <div class="contact-item">
+            <i class="fa-regular fa-clock"></i>
+            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+          </div>
+          <div class="contact-item">
+            <i class="fa-regular fa-clock"></i>
+            <p>Saturday: 10:00 AM - 3:00 PM</p>
+          </div>
+          <div class="contact-item">
+            <i class="fa-regular fa-clock"></i>
+            <p>Sunday: Closed</p>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-globe"></i>
+            <p>www.pragati.com</p>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <form action="#">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Your message" required></textarea>
+            <button type="submit" class="button form-button">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="section-container">
+      <div class="footer-section">
+        <div class="footer-copyright">
+          <p>© 2024 Coffee Shop</p>
+        </div>
+        <div class="footer-social-media">
+          <div class="social-icon">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-policies">
+          <a href="#">Privacy policy</a>
+          <span>•</span>
+          <a href="#">Refund policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Linking Swiper JS Link -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Linking custoom script -->
+  <script src="script.js"></script>
+</body>
+</html>
