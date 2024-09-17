@@ -1,7 +1,3 @@
-Here's your README formatted properly with headings and clear sections:
-
----
-
 # ☕ Coffee Website
 
 Welcome to the **Coffee Website** project, a beautifully designed and responsive web application showcasing a coffee shop's menu, offers, and more. This website allows customers to view special events, browse through the coffee menu, track their orders, and get to know the story behind the coffee shop.
