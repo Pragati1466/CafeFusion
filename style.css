@@ -398,6 +398,14 @@ ul {
 .menu {
   padding: 5rem 0;
   background: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu .section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .menu .section-head {
@@ -411,6 +419,7 @@ ul {
   -webkit-text-fill-color: transparent;
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .menu-filter {
@@ -446,6 +455,118 @@ ul {
   color: var(--white-color);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.menu-wrapper {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.menu-grid {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 0;
+  margin: 0 -1rem;
+}
+
+.menu-slider {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem;
+}
+
+.menu-item {
+  flex: 0 0 300px;
+  opacity: 0.7;
+  transform: scale(0.9);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 2rem;
+}
+
+.menu-item.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-navigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.menu-nav-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  color: var(--text-color);
+}
+
+.menu-nav-btn:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+  transform: translateY(-2px);
+}
+
+.menu-nav-btn i {
+  font-size: 1.5rem;
+}
+
+.menu-progress {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 2rem auto;
+  border-radius: 2px;
+  overflow: hidden;
+  max-width: 300px;
+}
+
+.menu-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.menu-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.menu-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-dot.active {
+  background: var(--primary-color);
+  transform: scale(1.2);
 }
 
 .menu-grid {
