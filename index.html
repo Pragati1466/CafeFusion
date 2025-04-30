@@ -29,6 +29,7 @@
         <li class="nav-item"><a href="#testimonial" class="nav-link">Testimonial</a></li>
         <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
         <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
+        <li class="nav-item"><a href="#playlist-vibes" class="nav-link">Playlist</a></li>
       </ul>
 
       <i id="open-menu-button" class="fa-solid fa-bars"></i>
@@ -36,23 +37,48 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="section-container">
-      <div class="hero-container">
-        <div class="hero-details">
-          <h2 class="hero-title">Best Coffee</h2>
-          <h3 class="hero-subtitle">Make your day great with our special coffee!</h3>
-          <p class="hero-description">Welcome to our coffee paradise, where every bean tells a story and every cup
-            sparks joy.</p>
+  <section class="hero" id="home">
+    <div class="hero-diagonal-container">
+      <div class="hero-content-wrapper">
+        <div class="hero-text-zone">
+          <h1 class="hero-title">Sippin' Aesthetic, Pourin' Vibes</h1>
+          <p class="hero-subtitle">Step into the brewverse — where the beans are bold & the mood is bolder</p>
 
-          <div class="hero-buttons">
-            <button class="button order-now-button">Order Now</button>
-            <button class="button contact-us-button">Contact Us</button>
+          <div class="hero-ctas">
+            <button class="hero-cta start-sippin">
+              <span>☕ Start Sippin'</span>
+            </button>
+            <button class="hero-cta our-playlist" id="playlist-btn">
+              <span>🎧 Our Chill Playlist</span>
+            </button>
+          </div>
+
+          <div class="floating-elements">
+            <div class="floating-emoji coffee">☕</div>
+            <div class="floating-emoji sparkle">✨</div>
+            <div class="floating-emoji camera">📸</div>
           </div>
         </div>
 
-        <div class="hero-image-wrapper">
-          <img src="images/istockphoto-1467199060-612x612.jpg" alt="Coffee" class="hero-image">
+        <div class="hero-visual-zone">
+          <div class="latte-art-blob">
+            <img src="https://gifdb.com/images/high/hot-coffee-latte-art-swirl-5xvh5qdxjjp5loba.gif"
+              alt="Latte Art Swirl" class="latte-image">
+            <div class="latte-steam"></div>
+          </div>
+
+          <div class="glassmorphic-menu-preview">
+            <h4>Today's Brew</h4>
+            <div class="menu-preview-item">
+              <img
+                src="https://toppng.com/uploads/preview/coffee-svg-png-icon-free-download-coffee-icon-vector-115630823923jqzwmnp9y.png"
+                alt="Coffee Icon">
+              <div class="item-details">
+                <h5>Fusion Mocha Madness</h5>
+                <p>Chocolate meets innovation</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -99,15 +125,6 @@
                 <p>Constantly experimenting with flavors and brewing techniques.</p>
               </div>
             </div>
-
-            <div class="social-proof">
-              <h4>🎧 What We're Vibing To</h4>
-              <iframe style="border-radius:12px"
-                src="https://open.spotify.com/embed/playlist/11nSleISOWGLboWVWPDuwB?utm_source=generator" width="100%"
-                height="352" frameBorder="0" allowfullscreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-              </iframe>
-            </div>
           </div>
         </div>
       </div>
@@ -118,35 +135,74 @@
   <section class="features-section" id="features">
     <div class="section-container">
       <div class="section-head">
-        <h1 class="reveal-text">Our Features</h1>
-        <p class="reveal-text">Experience the best of our coffee house with our premium offerings and services.</p>
+        <h1 class="reveal-text">Our Innovative Features</h1>
+        <p class="reveal-text">Discover how Café Fusion is redefining your coffee experience</p>
       </div>
 
       <div class="row features-grid">
         <div class="col-lg-4 col-sm-6 feature-item" data-index="0">
-          <div class="item">
-            <span class="icon"><i class="fa fa-coffee"></i></span>
-            <h6>Premium Coffee</h6>
-            <p>Savor our carefully selected coffee beans, expertly roasted and brewed to perfection for the ultimate
-              coffee experience.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3>Sustainable Sourcing</h3>
+            <p>100% traceable beans from ethical farms, supporting local communities and environmental conservation.</p>
+            <a href="#" class="feature-link">Learn More</a>
           </div>
         </div>
 
         <div class="col-lg-4 col-sm-6 feature-item" data-index="1">
-          <div class="item">
-            <span class="icon"><i class="fa fa-clock"></i></span>
-            <h6>Quick Service</h6>
-            <p>Enjoy prompt and efficient service from our skilled baristas, ensuring you get your favorite coffee
-              without the wait.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Order Tracking</h3>
+            <p>Real-time coffee order tracking with personalized updates and estimated preparation time.</p>
+            <a href="#order-tracking" class="feature-link">Track Your Order</a>
           </div>
         </div>
 
         <div class="col-lg-4 col-sm-6 feature-item" data-index="2">
-          <div class="item">
-            <span class="icon"><i class="fa fa-star"></i></span>
-            <h6>Special Events</h6>
-            <p>Join our special events and seasonal celebrations with exclusive offers, themed drinks, and festive
-              atmosphere.</p>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3>Custom Brew Lab</h3>
+            <p>Personalize your coffee with our interactive brew customization tool. Create your perfect blend.</p>
+            <a href="#brew-lab" class="feature-link">Start Brewing</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 feature-item" data-index="3">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-gift"></i>
+            </div>
+            <h3>Loyalty Program</h3>
+            <p>Earn beans, get exclusive rewards, and enjoy personalized offers with our digital loyalty program.</p>
+            <a href="#loyalty" class="feature-link">Join Now</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 feature-item" data-index="4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3>Global Coffee Passport</h3>
+            <p>Explore coffee cultures worldwide through our curated international coffee experience.</p>
+            <a href="#coffee-passport" class="feature-link">Explore Cultures</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 feature-item" data-index="5">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>AI Coffee Recommender</h3>
+            <p>Get personalized coffee recommendations based on your taste preferences and mood.</p>
+            <a href="#ai-recommender" class="feature-link">Get Recommendations</a>
           </div>
         </div>
       </div>
@@ -184,31 +240,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Live Coffee Order Tracker Section -->
-  <section class="order-tracker" id="order-tracker">
-    <h2 class="section-title">Track Your Coffee Order</h2>
-    <div class="tracker-container">
-      <div class="tracker-progress">
-        <div class="tracker-step" id="step-preparation">
-          <span class="tracker-label">Preparation</span>
-          <div class="tracker-icon"><i class="fa-solid fa-coffee"></i></div>
-        </div>
-        <div class="tracker-step" id="step-brewing">
-          <span class="tracker-label">Brewing</span>
-          <div class="tracker-icon"><i class="fa-solid fa-mug-hot"></i></div>
-        </div>
-        <div class="tracker-step" id="step-delivery">
-          <span class="tracker-label">Delivery</span>
-          <div class="tracker-icon"><i class="fa-solid fa-truck"></i></div>
-        </div>
-      </div>
-      <div class="tracker-status" id="tracker-status">
-        <!-- Status will be updated dynamically here -->
-      </div>
-    </div>
-  </section>
-
   <!-- Our Menu Section -->
   <section class="menu" id="menu">
     <div class="section-container">
@@ -467,6 +498,31 @@
     </div>
   </section>
 
+  <!-- Playlist Section -->
+  <section class="playlist-vibes" id="playlist-vibes">
+    <div class="section-container">
+      <div class="section-head">
+        <h1 class="reveal-text playlist-title">🎧 What We're Vibing To</h1>
+        <p class="reveal-text playlist-subtitle">The soundtrack of our coffee moments</p>
+      </div>
+
+      <div class="playlist-container">
+        <div class="spotify-embed">
+          <iframe src="https://open.spotify.com/embed/playlist/11nSleISOWGLboWVWPDuwB?utm_source=generator" width="100%"
+            height="380" frameborder="0" allowtransparency="true" allow="encrypted-media">
+          </iframe>
+        </div>
+
+        <div class="playlist-description">
+          <h3>Café Fusion Playlist</h3>
+          <p>A carefully curated mix of indie, lo-fi, and chill beats that perfectly complement your coffee experience.
+            From smooth jazz to acoustic vibes, this playlist is designed to elevate your mood and enhance your café
+            moments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Testimonial Section -->
   <section class="testimonial" id="testimonial">
     <div class="section-container">
@@ -702,6 +758,116 @@
     </div>
   </section>
 
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="section-container">
+      <div class="section-head">
+        <h1 class="reveal-text">📞 Connect with Café Fusion</h1>
+        <p class="reveal-text">Let's brew something amazing together!</p>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-details">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Our Café</h4>
+                <p>Café Fusion, 42 Hauz Khas Village, New Delhi, Delhi 110016, India</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Call Us</h4>
+                <p>+91 (011) 4567-8901</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p>hello@cafefusion.in</p>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Hours</h4>
+                <p>Mon-Sun: 8:00 AM - 11:00 PM</p>
+              </div>
+            </div>
+
+            <div class="contact-social">
+              <h4>Follow Our Vibe</h4>
+              <div class="social-links">
+                <a href="https://www.instagram.com" target="_blank" class="social-icon"><i
+                    class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com" target="_blank" class="social-icon"><i
+                    class="fab fa-facebook"></i></a>
+                <a href="https://www.zomato.com" target="_blank" class="social-icon"><i class="fas fa-utensils"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="What should we call you?">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="Your digital postcard">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="">Choose a vibe</option>
+                <option value="general">General Inquiry</option>
+                <option value="feedback">Feedback</option>
+                <option value="catering">Catering</option>
+                <option value="events">Events</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" required placeholder="Spill the tea (or coffee)"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.555984455474!2d77.19644431499999!3d28.535516482000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1927f3f3f3f3%3A0x6dabf5b1f2a3f3f3!2sCaf%C3%A9%20Fusion%2C%2042%20Hauz%20Khas%20Village%2C%20Hauz%20Khas%2C%20New%20Delhi%2C%20Delhi%20110016!5e0!3m2!1sen!2sin!4v1669981111157!5m2!1sen!2sin"
+          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- Subscription Section -->
   <section class="subscription" id="subscription">
     <h2 class="section-title">Subscription Plans</h2>
@@ -734,72 +900,85 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <div class="section-container">
-      <div class="contact-container">
-        <div class="contact-details">
-          <div class="contact-item">
-            <i class="fa-solid fa-location-crosshairs"></i>
-            <p>123 Tilak Nagar,Delhi</p>
-          </div>
-          <div class="contact-item">
-            <i class="fa-regular fa-envelope"></i>
-            <p>info@coffeeshopwebsite.com</p>
-          </div>
-          <div class="contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <p>+91 1234567892</p>
-          </div>
-          <div class="contact-item">
-            <i class="fa-regular fa-clock"></i>
-            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-          </div>
-          <div class="contact-item">
-            <i class="fa-regular fa-clock"></i>
-            <p>Saturday: 10:00 AM - 3:00 PM</p>
-          </div>
-          <div class="contact-item">
-            <i class="fa-regular fa-clock"></i>
-            <p>Sunday: Closed</p>
-          </div>
-          <div class="contact-item">
-            <i class="fa-solid fa-globe"></i>
-            <p>www.pragati.com</p>
-          </div>
-        </div>
-
-        <div class="contact-form">
-          <form action="#">
-            <input type="text" placeholder="Your name" required>
-            <input type="email" placeholder="Your email" required>
-            <textarea placeholder="Your message" required></textarea>
-            <button type="submit" class="button form-button">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer Section -->
   <footer class="footer">
-    <div class="section-container">
-      <div class="footer-section">
-        <div class="footer-copyright">
-          <p> 2025 Coffee Shop</p>
-        </div>
-        <div class="footer-social-media">
-          <div class="social-icon">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="Café Fusion Logo" class="footer-logo">
+          <p class="footer-tagline">Where Coffee Meets Culture</p>
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/cafefusion_india" target="_blank" class="social-icon"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/cafefusion.india" target="_blank" class="social-icon"><i
+                class="fab fa-facebook"></i></a>
+            <a href="https://www.twitter.com/cafefusion_in" target="_blank" class="social-icon"><i
+                class="fab fa-twitter"></i></a>
+            <a href="https://www.zomato.com/cafefusion" target="_blank" class="social-icon"><i
+                class="fas fa-utensils"></i></a>
           </div>
         </div>
-        <div class="footer-policies">
-          <a href="#">Privacy policy</a>
-          <span>•</span>
-          <a href="#">Refund policy</a>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#menu">Our Menu</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#subscription">Subscription</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#order-tracking">Order Tracking</a></li>
+              <li><a href="#">Catering</a></li>
+              <li><a href="#">Franchise</a></li>
+              <li><a href="#">Gift Cards</a></li>
+              <li><a href="#">Corporate Offers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Refund Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4>Stay Brewing with Us</h4>
+          <p>Subscribe to our newsletter for exclusive offers and updates</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+          <div class="newsletter-disclaimer">
+            By subscribing, you agree to our <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <p>&copy; 2025 Café Fusion. All Rights Reserved.</p>
+          <div class="footer-payments">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-paypal"></i>
+            <i class="fab fa-google-pay"></i>
+            <i class="fab fa-apple-pay"></i>
+          </div>
         </div>
       </div>
     </div>
