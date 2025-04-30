@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Mobile menu functionality
   const navbarLinks = document.querySelectorAll(".nav-menu .nav-item");
   const openMenuButton = document.getElementById("open-menu-button");
@@ -32,20 +32,20 @@ document.addEventListener("DOMContentLoaded", function() {
     if (currentMonth >= 10 && currentMonth <= 11) { // October to November for Diwali
       document.getElementById("diwali-offer").style.display = 'block';
       offerDisplayed = true;
-    } 
+    }
     if (currentMonth === 12) { // December for Christmas
       document.getElementById("christmas-offer").style.display = 'block';
       document.getElementById("newyear-offer").style.display = 'block';
       offerDisplayed = true;
-    } 
+    }
     if (currentMonth === 1) { // January for New Year
       document.getElementById("newyear-offer").style.display = 'block';
       offerDisplayed = true;
-    } 
+    }
     if (currentMonth === 3) { // March for Holi
       document.getElementById("holi-offer").style.display = 'block';
       offerDisplayed = true;
-    } 
+    }
     if (currentMonth === 8) { // August for Raksha Bandhan
       document.getElementById("rakhi-offer").style.display = 'block';
       offerDisplayed = true;
@@ -92,6 +92,159 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // Intersection Observer configuration for all animations
+  const animationObserverOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2
+  };
+
+  // Create a single observer for all animations
+  const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        animationObserver.unobserve(entry.target);
+      }
+    });
+  }, animationObserverOptions);
+
+  // Function to initialize animations for elements
+  function initializeAnimations() {
+    // Observe feature items
+    const featureItems = document.querySelectorAll('.feature-item');
+    featureItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(30px)';
+      item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      animationObserver.observe(item);
+    });
+
+    // Observe gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(30px)';
+      item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      animationObserver.observe(item);
+    });
+
+    // Observe reveal texts
+    const revealTexts = document.querySelectorAll('.reveal-text');
+    revealTexts.forEach((text, index) => {
+      text.style.opacity = '0';
+      text.style.transform = 'translateY(20px)';
+      text.style.transition = `all 0.5s ease ${index * 0.1}s`;
+      animationObserver.observe(text);
+    });
+  }
+
+  initializeAnimations();
+
+  // Initialize Swiper for testimonials
+  const testimonialSwiper = new Swiper('.testimonial-slider', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+
+  // Gallery Filtering
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      const filterValue = button.getAttribute('data-filter');
+
+      galleryItems.forEach(item => {
+        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+          item.style.opacity = '1';
+          item.style.transform = 'scale(1)';
+          item.style.display = 'block';
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.8)';
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 300);
+        }
+      });
+    });
+  });
+
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.querySelector('.lightbox-image');
+  const lightboxCaption = document.querySelector('.lightbox-caption');
+  const closeLightbox = document.querySelector('.close-lightbox');
+
+  // Open lightbox
+  document.querySelectorAll('.gallery-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('img');
+      const title = card.querySelector('h3').textContent;
+      const desc = card.querySelector('p').textContent;
+
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close lightbox
+  closeLightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+
+  // Close lightbox on outside click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Add hover effect for items
+  const items = document.querySelectorAll('.item');
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      item.style.transform = 'translateY(-8px)';
+    });
+
+    item.addEventListener('mouseleave', () => {
+      item.style.transform = 'translateY(0)';
+    });
+  });
+
   // Coffee order tracker functionality
   const steps = {
     preparation: document.getElementById("step-preparation"),
@@ -130,4 +283,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Example usage:
   // updateTracker('brewing'); // Update this based on your actual order tracking logic
+
+  // Smooth scroll for navigation
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
 });
