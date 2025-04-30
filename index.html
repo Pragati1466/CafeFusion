@@ -177,332 +177,263 @@
     </div>
   </section>
 
-  <!-- Our Menu Section -->
-<!-- Our Menu Section -->
-<section class="menu" id="menu">
-  <div class="section-container">
-    <div class="section-head">
-      <h1 class="reveal-text">Our Vibe Menu</h1>
-      <p class="reveal-text">✨ Discover your next favorite drink ✨</p>
+ <!-- Our Menu Section -->
+  <section class="menu" id="menu">
+    <div class="section-container">
+      <div class="section-head">
+        <h1 class="reveal-text">Our Vibe Menu</h1>
+        <p class="reveal-text">✨ Discover your next favorite drink ✨</p>
+      </div>
+
+      <div class="menu-filter">
+        <button class="menu-btn active" data-filter="all">
+          <span class="emoji">🌟</span> All
+        </button>
+        <button class="menu-btn" data-filter="hot">
+          <span class="emoji">🔥</span> Hot Drinks
+        </button>
+        <button class="menu-btn" data-filter="cold">
+          <span class="emoji">❄️</span> Cold Drinks
+        </button>
+        <button class="menu-btn" data-filter="seasonal">
+          <span class="emoji">🍁</span> Seasonal
+        </button>
+      </div>
+
+      <div class="menu-wrapper">
+        <!-- Navigation Arrows -->
+        <div class="menu-navigation">
+          <button class="menu-nav-btn prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="menu-nav-btn next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- Menu Grid with Slider -->
+        <div class="menu-grid">
+          <div class="menu-slider">
+            <!-- Menu Items -->
+            <div class="menu-item" data-category="hot">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://rahicafe.com/wp-content/uploads/2020/09/masala-chai-adarakh-ki-chai-1.jpg"
+                    alt="Masala Chai" class="menu-image">
+                  <div class="trending-badge">🔥 Trending</div>
+                  <h3>Masala Chai</h3>
+                  <div class="price">₹80</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Masala Chai</h3>
+                  <p>Spiced Indian tea brewed with aromatic herbs and milk</p>
+                  <div class="tags">
+                    <span>#ChaiLover</span>
+                    <span>#MasalaChai</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item" data-category="hot">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://en-media.thebetterindia.com/uploads/2024/10/filter-coffee-5-1727789534.jpg"
+                    alt="Filter Coffee" class="menu-image">
+                  <div class="trending-badge">✨ Fan Favorite</div>
+                  <h3>Filter Coffee</h3>
+                  <div class="price">₹90</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Filter Coffee</h3>
+                  <p>South Indian strong coffee served with frothy milk</p>
+                  <div class="tags">
+                    <span>#CoffeeLovers</span>
+                    <span>#SouthIndian</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item" data-category="hot">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://i.pinimg.com/736x/d7/a9/c1/d7a9c1d7c6bb2a7aa3fd617262634364.jpg" alt="Elaichi Chai"
+                    class="menu-image">
+                  <h3>Cardamom Tea</h3>
+                  <div class="price">₹85</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Cardamom Tea</h3>
+                  <p>Fragrant cardamom-infused tea with a hint of sweetness</p>
+                  <div class="tags">
+                    <span>#Cardamom</span>
+                    <span>#ChaiTime</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item" data-category="hot">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://cdn.loveandlemons.com/wp-content/uploads/2025/02/ginger-tea.jpg" alt="Ginger Tea"
+                    class="menu-image">
+                  <h3>Ginger Tea</h3>
+                  <div class="price">₹85</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Ginger Tea</h3>
+                  <p>Invigorating tea brewed with fresh ginger slices</p>
+                  <div class="tags">
+                    <span>#ImmunityBoost</span>
+                    <span>#ChaiTime</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item" data-category="hot">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://i.pinimg.com/736x/d0/3a/2c/d03a2c38990f71595ae6296f95324f3b.jpg" alt="Kesar Milk"
+                    class="menu-image">
+                  <h3>Saffron Milk</h3>
+                  <div class="price">₹100</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Saffron Milk</h3>
+                  <p>Warm milk infused with saffron strands and dry fruits</p>
+                  <div class="tags">
+                    <span>#RoyalDrink</span>
+                    <span>#WinterSpecial</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cold Drinks -->
+            <div class="menu-item" data-category="cold">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://frostingandfettuccine.com/wp-content/uploads/2022/12/Caramel-Iced-Coffee-6.jpg"
+                    alt="Cold Coffee" class="menu-image">
+                  <div class="trending-badge">✨ Fan Favorite</div>
+                  <h3>Cold Coffee</h3>
+                  <div class="price">₹120</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Cold Coffee</h3>
+                  <p>Chilled coffee blended with ice cream and chocolate syrup</p>
+                  <div class="tags">
+                    <span>#CoolBeans</span>
+                    <span>#SummerVibes</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item" data-category="cold">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://vaya.in/recipes/wp-content/uploads/2018/09/Mango-lassi.jpg" alt="Mango Lassi"
+                    class="menu-image">
+                  <h3>Mango Lassi</h3>
+                  <div class="price">₹110</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Mango Lassi</h3>
+                  <p>Sweet and creamy yogurt-based mango drink</p>
+                  <div class="tags">
+                    <span>#MangoMania</span>
+                    <span>#DesiCooler</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item" data-category="cold">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://www.shutterstock.com/image-photo/pink-moon-milk-glass-midnight-260nw-1914837412.jpg"
+                    alt="Rose Milk" class="menu-image">
+                  <h3>Rose Milk</h3>
+                  <div class="price">₹90</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Rose Milk</h3>
+                  <p>Chilled milk flavored with rose syrup and cardamom</p>
+                  <div class="tags">
+                    <span>#Refreshing</span>
+                    <span>#DesiTwist</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Seasonal Specials -->
+            <div class="menu-item" data-category="seasonal">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img src="https://i.pinimg.com/736x/80/5c/d5/805cd51de318ab53b77247b1264fb0d4.jpg" alt="Thandai"
+                    class="menu-image">
+                  <h3>Thandai</h3>
+                  <div class="price">₹130</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Thandai</h3>
+                  <p>Holi special milk drink with nuts, spices, and rose petals</p>
+                  <div class="tags">
+                    <span>#FestiveFlavors</span>
+                    <span>#ChillVibe</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item" data-category="seasonal">
+              <div class="menu-card">
+                <div class="menu-card-front">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjF6cep0FqVhQqYrfZ0CnyG6oH3iVe2gIknA&s"
+                    alt="Kulfi Shake" class="menu-image">
+                  <h3>Kulfi Shake</h3>
+                  <div class="price">₹140</div>
+                </div>
+                <div class="menu-card-back">
+                  <h3>Kulfi Shake</h3>
+                  <p>Creamy shake made with traditional kulfi and cardamom</p>
+                  <div class="tags">
+                    <span>#SummerSpecial</span>
+                    <span>#RichTaste</span>
+                  </div>
+                  <button class="order-btn">Add to Cart 🛒</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="menu-progress">
+          <div class="menu-progress-bar"></div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="menu-dots"></div>
+      </div>
     </div>
-
-    <div class="menu-filter">
-      <button class="menu-btn active" data-filter="all">
-        <span class="emoji">🌟</span> All
-      </button>
-      <button class="menu-btn" data-filter="hot">
-        <span class="emoji">🔥</span> Hot Drinks
-      </button>
-      <button class="menu-btn" data-filter="cold">
-        <span class="emoji">❄️</span> Cold Drinks
-      </button>
-      <button class="menu-btn" data-filter="seasonal">
-        <span class="emoji">🍁</span> Seasonal
-      </button>
-    </div>
-
-    <div class="menu-grid">
-      <!-- Hot Drinks -->
-      <div class="menu-item" data-category="hot">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://rahicafe.com/wp-content/uploads/2020/09/masala-chai-adarakh-ki-chai-1.jpg" alt="Masala Chai" class="menu-image">
-            <div class="trending-badge">🔥 Trending</div>
-            <h3>Masala Chai</h3>
-            <div class="price">₹80</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Masala Chai</h3>
-            <p>Spiced Indian tea brewed with aromatic herbs and milk.</p>
-            <div class="tags">
-              <span>#DesiVibes</span>
-              <span>#ChaiLovers</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Ginger</span>
-                <span class="price-tag">+₹10</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sugar</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-item" data-category="hot">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://en-media.thebetterindia.com/uploads/2024/10/filter-coffee-5-1727789534.jpg" alt="Filter Coffee" class="menu-image">
-            <div class="trending-badge">✨ Fan Favorite</div>
-            <h3>Filter Coffee</h3>
-            <div class="price">₹90</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Filter Coffee</h3>
-            <p>South Indian strong coffee served with frothy milk.</p>
-            <div class="tags">
-              <span>#CoffeeLovers</span>
-              <span>#SouthIndian</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Decoction</span>
-                <span class="price-tag">+₹15</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sugar</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-item" data-category="hot">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://i.pinimg.com/736x/d7/a9/c1/d7a9c1d7c6bb2a7aa3fd617262634364.jpg" alt="Elaichi Chai" class="menu-image">
-            <h3>Elaichi Chai</h3>
-            <div class="price">₹85</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Elaichi Chai</h3>
-            <p>Fragrant cardamom-infused tea with a hint of sweetness.</p>
-            <div class="tags">
-              <span>#Cardamom</span>
-              <span>#ChaiTime</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Elaichi</span>
-                <span class="price-tag">+₹10</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sugar</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-item" data-category="hot">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://cdn.loveandlemons.com/wp-content/uploads/2025/02/ginger-tea.jpg" alt="Ginger Tea" class="menu-image">
-            <h3>Ginger Tea</h3>
-            <div class="price">₹85</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Ginger Tea</h3>
-            <p>Invigorating tea brewed with fresh ginger slices.</p>
-            <div class="tags">
-              <span>#ImmunityBoost</span>
-              <span>#ChaiTime</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Ginger</span>
-                <span class="price-tag">+₹10</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sugar</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-item" data-category="hot">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://i.pinimg.com/736x/d0/3a/2c/d03a2c38990f71595ae6296f95324f3b.jpg" alt="Kesar Milk" class="menu-image">
-            <h3>Kesar Milk</h3>
-            <div class="price">₹100</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Kesar Milk</h3>
-            <p>Warm milk infused with saffron strands and dry fruits.</p>
-            <div class="tags">
-              <span>#RoyalDrink</span>
-              <span>#WinterSpecial</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Saffron</span>
-                <span class="price-tag">+₹20</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sugar</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cold Drinks -->
-      <div class="menu-item" data-category="cold">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://frostingandfettuccine.com/wp-content/uploads/2022/12/Caramel-Iced-Coffee-6.jpg" alt="Cold Coffee" class="menu-image">
-            <div class="trending-badge">✨ Fan Favorite</div>
-            <h3>Cold Coffee</h3>
-            <div class="price">₹120</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Cold Coffee</h3>
-            <p>Chilled coffee blended with ice cream and chocolate syrup.</p>
-            <div class="tags">
-              <span>#CoolBeans</span>
-              <span>#SummerVibes</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Ice Cream</span>
-                <span class="price-tag">+₹30</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sugar</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-item" data-category="cold">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://vaya.in/recipes/wp-content/uploads/2018/09/Mango-lassi.jpg" alt="Mango Lassi" class="menu-image">
-            <h3>Mango Lassi</h3>
-            <div class="price">₹110</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Mango Lassi</h3>
-            <p>Sweet and creamy yogurt-based mango drink.</p>
-            <div class="tags">
-              <span>#MangoMania</span>
-              <span>#DesiCooler</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Mango Pulp</span>
-                <span class="price-tag">+₹20</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sugar</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-item" data-category="cold">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://www.shutterstock.com/image-photo/pink-moon-milk-glass-midnight-260nw-1914837412.jpg" alt="Rose Milk" class="menu-image">
-            <h3>Rose Milk</h3>
-            <div class="price">₹90</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Rose Milk</h3>
-            <p>Chilled milk flavored with rose syrup and a hint of cardamom.</p>
-            <div class="tags">
-              <span>#Refreshing</span>
-              <span>#DesiTwist</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Rose Syrup</span>
-                <span class="price-tag">+₹10</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sweet</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Seasonal Specials -->
-      <div class="menu-item" data-category="seasonal">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://i.pinimg.com/736x/80/5c/d5/805cd51de318ab53b77247b1264fb0d4.jpg" alt="Thandai" class="menu-image">
-            <h3>Thandai</h3>
-            <div class="price">₹130</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Thandai</h3>
-            <p>Holi-special milk drink blended with nuts, spices, and rose petals.</p>
-            <div class="tags">
-              <span>#FestiveFlavors</span>
-              <span>#ChillVibe</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Dry Fruits</span>
-                <span class="price-tag">+₹20</span>
-              </div>
-              <div class="custom-option">
-                <span>No Ice</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-item" data-category="seasonal">
-        <div class="menu-card">
-          <div class="menu-card-front">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjF6cep0FqVhQqYrfZ0CnyG6oH3iVe2gIknA&s" alt="Kulfi Shake" class="menu-image">
-            <h3>Kulfi Shake</h3>
-            <div class="price">₹140</div>
-          </div>
-          <div class="menu-card-back">
-            <h3>Kulfi Shake</h3>
-            <p>Creamy shake made with traditional kulfi and a dash of cardamom.</p>
-            <div class="tags">
-              <span>#SummerSpecial</span>
-              <span>#RichTaste</span>
-            </div>
-            <button class="order-btn">Add to Cart 🛒</button>
-            <div class="customization">
-              <div class="custom-option">
-                <span>Extra Kulfi</span>
-                <span class="price-tag">+₹25</span>
-              </div>
-              <div class="custom-option">
-                <span>Less Sweet</span>
-                <span class="price-tag">Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
- 
+  </section>
 
 
   <!-- Testimonial Section -->
