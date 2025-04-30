@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       specialOffersSection.style.display = 'none';
     }
   }
-// Menu Carousel
+  // Menu Carousel
   const menuSlider = document.querySelector('.menu-slider');
   const menuItems = document.querySelectorAll('.menu-item');
   const prevBtn = document.querySelector('.menu-nav-btn.prev');
@@ -469,5 +469,175 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     });
+  });
+
+  // Playlist Section Scroll
+  document.getElementById('playlist-btn')?.addEventListener('click', () => {
+    const playlistSection = document.getElementById('playlist-vibes');
+    playlistSection.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Order Tracking Functionality
+  const orderNumberInput = document.getElementById('order-number');
+  const trackOrderBtn = document.getElementById('track-order-btn');
+  const orderStatusDisplay = document.getElementById('order-status');
+
+  // Simulated order statuses
+  const orderStatuses = {
+    'received': {
+      steps: ['received', 'preparing', 'ready'],
+      currentStep: 0
+    },
+    'preparing': {
+      steps: ['received', 'preparing', 'ready'],
+      currentStep: 1
+    },
+    'ready': {
+      steps: ['received', 'preparing', 'ready'],
+      currentStep: 2
+    }
+  };
+
+  // Mock order database (in a real app, this would be a backend API)
+  const mockOrderDatabase = {
+    'CAFE123': 'preparing',
+    'CAFE456': 'received',
+    'CAFE789': 'ready'
+  };
+
+  trackOrderBtn.addEventListener('click', () => {
+    const orderNumber = orderNumberInput.value.toUpperCase();
+
+    // Clear previous status
+    orderStatusDisplay.querySelectorAll('.status-step').forEach(step => {
+      step.classList.remove('active');
+    });
+
+    // Check if order exists
+    if (mockOrderDatabase[orderNumber]) {
+      const orderStatus = mockOrderDatabase[orderNumber];
+      const statusInfo = orderStatuses[orderStatus];
+
+      // Activate steps up to current status
+      statusInfo.steps.slice(0, statusInfo.currentStep + 1).forEach(step => {
+        const stepElement = orderStatusDisplay.querySelector(`[data-status="${step}"]`);
+        if (stepElement) {
+          stepElement.classList.add('active');
+        }
+      });
+
+      // Optional: Show toast or notification
+      showNotification(`Order ${orderNumber} is currently ${orderStatus}`, 'success');
+    } else {
+      // Order not found
+      showNotification('Order not found. Please check your order number.', 'error');
+    }
+  });
+
+  // Notification helper function
+  function showNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+
+    // Append to body
+    document.body.appendChild(notification);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 3000);
+  }
+
+  // Contact Form Handling
+  const contactForm = document.getElementById('contact-form');
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      subject: document.getElementById('subject').value,
+      message: document.getElementById('message').value.trim()
+    };
+
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      showNotification('Please fill in all required fields', 'error');
+      return;
+    }
+
+    // Email validation regex (Indian-friendly)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(formData.email)) {
+      showNotification('Please enter a valid email address', 'error');
+      return;
+    }
+
+    // Phone number validation (Indian mobile numbers)
+    const phoneRegex = /^(\+91[-\s]?)?[6-9]\d{9}$/;
+    if (formData.phone && !phoneRegex.test(formData.phone)) {
+      showNotification('Please enter a valid Indian mobile number', 'error');
+      return;
+    }
+
+    // Simulate form submission (replace with actual API call in production)
+    try {
+      // Mock API submission
+      console.log('Submitting form:', formData);
+
+      // Clear form
+      contactForm.reset();
+
+      // Show success notification
+      showNotification('संदेश सफलतापूर्वक भेजा गया! हम जल्द ही आपसे संपर्क करेंगे। (Message sent successfully! We\'ll get back to you soon.)', 'success');
+    } catch (error) {
+      showNotification('संदेश भेजने में असफल। कृपया पुनः प्रयास करें। (Failed to send message. Please try again.)', 'error');
+    }
+  });
+
+  // Newsletter Subscription Handling
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterInput = newsletterForm.querySelector('input[type="email"]');
+  const newsletterButton = newsletterForm.querySelector('button');
+
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Get email value and trim whitespace
+    const email = newsletterInput.value.trim();
+
+    // Email validation regex (Indian-friendly)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // Validate email
+    if (!email) {
+      showNotification('Please enter your email address', 'error');
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      showNotification('Please enter a valid email address', 'error');
+      return;
+    }
+
+    // Simulate newsletter subscription (replace with actual API call in production)
+    try {
+      // Mock API submission
+      console.log('Subscribing email:', email);
+
+      // Clear input
+      newsletterInput.value = '';
+
+      // Show success notification in both English and Hindi
+      showNotification('🎉 सफलतापूर्वक सब्सक्राइब! (Successfully subscribed!) You\'ll now receive our latest updates.', 'success');
+    } catch (error) {
+      // Error handling
+      showNotification('सब्सक्रिप्शन विफल। कृपया पुनः प्रयास करें। (Subscription failed. Please try again.)', 'error');
+    }
   });
 });
