@@ -99,9 +99,4 @@ Contributions are welcome! Please:
 - Create a feature branch
 - Submit a pull request
 
-## 📄 License
-MIT License
 
-## 💡 Contact
-Café Fusion Team
-[Your Contact Information]
