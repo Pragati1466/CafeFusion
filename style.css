@@ -127,6 +127,48 @@ ul {
   color: var(--primary-color);
 }
 
+/* Live Time Display */
+.live-time-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white-color);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-m);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.live-time-display:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.live-time-display i {
+  font-size: 1.1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+#live-time {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
 #open-menu-button,
 #close-menu-button {
   font-size: var(--font-size-l);
@@ -2135,5 +2177,27 @@ ul {
 
   .order-input-zone {
     flex-direction: column;
+  }
+
+  /* Responsive styles for live time display */
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .live-time-display {
+    order: 1;
+    flex: 1 1 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  .live-time-display i {
+    font-size: 1rem;
+  }
+
+  #open-menu-button {
+    display: block;
   }
 }

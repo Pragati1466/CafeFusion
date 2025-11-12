@@ -1,4 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Live Time Display Function
+  function updateLiveTime() {
+    const timeElement = document.getElementById('live-time');
+    const now = new Date();
+    
+    // Format time with AM/PM
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    // Convert to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0 should be 12
+    
+    // Add leading zeros
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    
+    // Display time
+    timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+  }
+  
+  // Update time immediately and then every second
+  updateLiveTime();
+  setInterval(updateLiveTime, 1000);
+
   // Mobile menu functionality
   const navbarLinks = document.querySelectorAll(".nav-menu .nav-item");
   const openMenuButton = document.getElementById("open-menu-button");
