@@ -7,7 +7,35 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+/* --- Preloader Styles --- */
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #f9f1ca 0%, #f9f1ca 100%); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensures it's on top of all other content */
+  
+  /* For the fade-out effect */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease-out, visibility 0.7s ease-out;
+}
 
+/* This class will be added by JavaScript to hide the loader */
+#loader-wrapper.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-gif {
+  width: 250px; /* Adjust the size of your GIF as needed */
+  height: auto;
+}
 :root {
   /* Colors */
   --white-color: #fff;
