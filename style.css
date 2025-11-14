@@ -48,7 +48,8 @@
   --secondary-color-alpha: rgba(10, 21, 56, 0.1);
   --hero-bg-beige: #f5e6d3;
   --hero-bg-mocha: #d2b48c;
-
+  --text-color: #5c4033;
+  
   /* Font weight */
   --font-weight-n: 400;
   --font-weight-m: 500;
