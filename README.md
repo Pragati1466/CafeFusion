@@ -2,8 +2,7 @@
   <h1>✨ Café Fusion</h1>
   <h3>Where Coffee Meets Culture</h3>
   <p>Elevating your coffee experience through technology and tradition</p>
-  
-  ![Divider](https://png.pngtree.com/element_our/20190529/ourmid/pngtree-coffee-bag-dividing-line-illustration-image_1214286.jpg)
+
 </div>
 
 ## 🚀 Overview
