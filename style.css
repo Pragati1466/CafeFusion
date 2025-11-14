@@ -1,5 +1,5 @@
 /* Google Fonts Link */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Miniver&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Miniver&display=swap");
 
 * {
   padding: 0;
@@ -46,8 +46,8 @@
   --medium-gray-color: #ccc;
   --primary-color-alpha: rgba(31, 57, 89, 0.1);
   --secondary-color-alpha: rgba(10, 21, 56, 0.1);
-  --hero-bg-beige: #F5E6D3;
-  --hero-bg-mocha: #D2B48C;
+  --hero-bg-beige: #f5e6d3;
+  --hero-bg-mocha: #d2b48c;
 
   /* Font weight */
   --font-weight-n: 400;
@@ -72,7 +72,7 @@
 }
 /* Beige Theme */
 .theme-beige {
-  --bg-color: #F5E6D3;
+  --bg-color: #f5e6d3;
   --text-color: #c0551f;
   --primary-color: #915519;
   --secondary-color: #f3961c;
@@ -80,15 +80,15 @@
 
 /* Mocha Theme */
 .theme-mocha {
-  --bg-color: #D2B48C;
+  --bg-color: #d2b48c;
   --text-color: #252525;
-  --primary-color: #5C4033;
+  --primary-color: #5c4033;
   --secondary-color: #f3961c;
 }
 
 /* Brown Theme */
 .theme-brown {
-  --bg-color: #8B4513;
+  --bg-color: #8b4513;
   --text-color: #fff;
   --primary-color: #3b141c;
   --secondary-color: #f3961c;
@@ -130,7 +130,7 @@ ul {
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   width: 80px;
   background: var(--secondary-color);
   height: 5px;
@@ -196,7 +196,7 @@ ul {
   cursor: pointer;
   border: none;
   background-color: transparent; /* default transparent */
-  color: var(--white-color);     /* text white like playlist */
+  color: var(--white-color); /* text white like playlist */
   border-radius: 4px;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   /* Ensure it matches link font size */
@@ -215,11 +215,11 @@ ul {
 .theme-options {
   display: none;
   position: absolute;
-  top: 100%;           /* right below button */
-  left: 0;             /* align with button */
+  top: 100%; /* right below button */
+  left: 0; /* align with button */
   min-width: 140px;
   background-color: var(--bg-color);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   margin: 4px 0;
   padding: 0;
@@ -231,7 +231,7 @@ ul {
   padding: 10px 16px;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
-  color: var(--white-color);  /* text white */
+  color: var(--white-color); /* text white */
   font-size: var(--font-size-m); /* same as playlist */
 }
 
@@ -245,7 +245,6 @@ ul {
 .theme-dropdown.show .theme-options {
   display: block;
 }
-
 
 /* Live Time Display */
 .live-time-display {
@@ -276,7 +275,8 @@ ul {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -285,7 +285,7 @@ ul {
 }
 
 #live-time {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   letter-spacing: 1px;
 }
 
@@ -344,7 +344,7 @@ ul {
 }
 
 .hero-title {
-  font-family: 'Clash Display', 'Space Grotesk', sans-serif;
+  font-family: "Clash Display", "Space Grotesk", sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   color: var(--primary-color);
   line-height: 1.2;
@@ -406,28 +406,43 @@ ul {
 .floating-emoji {
   position: absolute;
   font-size: 3rem;
-  opacity: 0.3;
+  opacity: 0.8;
   animation: float 3s ease-in-out infinite alternate;
 }
 
 .floating-emoji.coffee {
-  top: 0;
-  right: 0;
+  top: 174px;
+  right: 110px;
   animation-delay: 0s;
 }
 
 .floating-emoji.sparkle {
-  top: 50px;
-  right: 100px;
+  top: 45px;
+  right: 510px;
   animation-delay: 0.5s;
 }
 
 .floating-emoji.camera {
   top: 100px;
-  right: 50px;
+  right: 4px;
   animation-delay: 1s;
 }
+@media screen and (max-width: 1180px) {
+  .floating-emoji.coffee {
+    top: 160px;
+    right: 90px;
+  }
 
+  .floating-emoji.sparkle {
+    top: 45px;
+    right: 470px;
+  }
+
+  .floating-emoji.camera {
+    top: 100px;
+    right: 2px;
+  }
+}
 @keyframes float {
   0% {
     transform: translateY(0);
@@ -475,8 +490,7 @@ ul {
   left: 0;
   width: 100%;
   height: 50px;
-  background: linear-gradient(transparent,
-      rgba(255, 255, 255, 0.3));
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
   animation: steam 2s ease-in-out infinite alternate;
 }
 
@@ -532,6 +546,9 @@ ul {
 /* Responsive Adjustments (Original) */
 /* This media query is oddly placed, but I will keep it */
 @media (max-width: 1024px) {
+  .hero{
+    min-height: 100vh; 
+  }
   .hero-content-wrapper {
     grid-template-columns: 1fr;
     text-align: center;
@@ -539,7 +556,11 @@ ul {
 
   .hero-visual-zone {
     order: -1;
-    margin-bottom: 2rem;
+    margin: 4rem 2rem;
+  }
+  .latte-art-blob{
+    position: absolute;
+    top: -20px;
   }
   
   .hero-text-zone {
@@ -579,9 +600,11 @@ ul {
 /* About Us Section */
 .about-us {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
   overflow: hidden;
 }
 
@@ -628,7 +651,7 @@ ul {
 }
 
 .about-text-wrapper .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
@@ -858,9 +881,11 @@ ul {
 /* Live Coffee Order Tracker Styles */
 .order-tracker {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
   text-align: center;
 }
 
@@ -897,9 +922,11 @@ ul {
 /* Menu Section */
 .menu {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
   position: relative;
   overflow: hidden;
 }
@@ -922,7 +949,7 @@ ul {
   color: var(--primary-color); /* Simplified for theme */
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .menu-filter {
@@ -1287,9 +1314,11 @@ ul {
 /* Modern Gen Z-inspired styles for the coffee section */
 .coffee-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
 }
 
 .coffee-container {
@@ -1381,9 +1410,11 @@ ul {
 /* Testimonial Section */
 .testimonial {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
 }
 
 .testimonial .section-head {
@@ -1495,9 +1526,11 @@ ul {
 /* Gallery Section */
 .gallery {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
 }
 
 .gallery .section-head {
@@ -1700,9 +1733,11 @@ ul {
 /* Subscription Section Styles */
 .subscription {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
 }
 .subscription .section-title {
     padding: 0 0 60px; /* Override */
@@ -1774,9 +1809,11 @@ ul {
 
 /* Contact Section */
 .contact-section {
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
   padding: 4rem 0;
 }
 
@@ -1955,9 +1992,11 @@ ul {
 
 /* Footer Section */
 .footer {
-  background: linear-gradient(135deg,
-      var(--primary-color) 0%,
-      var(--secondary-color) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
   color: white;
   padding: 4rem 0 2rem;
 }
@@ -2150,9 +2189,11 @@ ul {
 /* Playlist Section */
 .playlist-vibes {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
 }
 .playlist-vibes .section-head p {
     margin-bottom: 0; /* Override */
@@ -2215,9 +2256,11 @@ ul {
 /* Features Section Redesign */
 .features-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg,
-      var(--hero-bg-beige) 0%,
-      var(--hero-bg-mocha) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--hero-bg-beige) 0%,
+    var(--hero-bg-mocha) 100%
+  );
 }
 .features-section .section-head p {
     margin-bottom: 0; /* Override */
