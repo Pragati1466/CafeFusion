@@ -1,3 +1,20 @@
+const startTime = Date.now();
+const minLoadTime = 2000;
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader-wrapper');
+  if (!loader) return;
+  const timeElapsed = Date.now() - startTime;
+  const remainingTime = minLoadTime - timeElapsed;
+
+  if (remainingTime > 0) {
+    setTimeout(() => {
+      loader.classList.add('hidden');
+    }, remainingTime);
+  } else {
+    loader.classList.add('hidden');
+  }
+});
+
 // THEME SWITCHER FUNCTIONALITY
 function setTheme(themeName) {
   document.body.classList.remove('theme-beige', 'theme-mocha', 'theme-brown');
