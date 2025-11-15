@@ -381,9 +381,12 @@ ul {
   background: var(--primary-color);
   color: white;
   box-shadow: 0 10px 25px rgba(var(--primary-color-rgb), 0.3);
+  background: linear-gradient(100deg, var(--primary-color), var(--secondary-color));
 }
 
 .start-sippin:hover {
+  background: transparent;
+  color: black;
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(var(--primary-color-rgb), 0.4);
 }
@@ -392,10 +395,27 @@ ul {
   background: transparent;
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
+  transition: all 0.3s ease, box-shadow 0.3s ease;
 }
 
 .our-playlist:hover {
+  transform: translateY(-5px);
   background: rgba(var(--primary-color-rgb), 0.1);
+  background: linear-gradient(100deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  box-shadow: 0 15px 35px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  font-weight: light;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
 
 .floating-elements {
