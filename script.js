@@ -15,27 +15,6 @@ window.addEventListener('load', () => {
   }
 });
 
-// THEME SWITCHER FUNCTIONALITY
-function setTheme(themeName) {
-  document.body.classList.remove('theme-beige', 'theme-mocha', 'theme-brown');
-  document.body.classList.add(themeName);
-  localStorage.setItem('selectedTheme', themeName);
-}
-
-// Apply saved theme on page load
-document.addEventListener("DOMContentLoaded", function () {
-  const savedTheme = localStorage.getItem("selectedTheme");
-  if (savedTheme) {
-    document.body.classList.add(savedTheme);
-  }
-
-  // 🎨 Theme dropdown toggle
-  const themeBtn = document.getElementById("theme-btn");
-  if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
-      themeBtn.parentElement.classList.toggle("show");
-    });
-  }
 
 // Live Time Display Function
   function updateLiveTime() {
