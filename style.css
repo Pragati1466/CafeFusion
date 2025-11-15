@@ -71,29 +71,6 @@
   /* Site max width */
   --site-max-width: 1300px;
 }
-/* Beige Theme */
-.theme-beige {
-  --bg-color: #f5e6d3;
-  --text-color: #c0551f;
-  --primary-color: #915519;
-  --secondary-color: #f3961c;
-}
-
-/* Mocha Theme */
-.theme-mocha {
-  --bg-color: #d2b48c;
-  --text-color: #252525;
-  --primary-color: #5c4033;
-  --secondary-color: #f3961c;
-}
-
-/* Brown Theme */
-.theme-brown {
-  --bg-color: #8b4513;
-  --text-color: #fff;
-  --primary-color: #3b141c;
-  --secondary-color: #f3961c;
-}
 
 html {
   scroll-behavior: smooth;
@@ -184,67 +161,6 @@ ul {
 .nav .nav-menu .nav-item .nav-link:hover {
   background: var(--secondary-color);
   color: var(--primary-color);
-}
-/* Container for dropdown */
-.theme-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Theme button */
-.theme-btn {
-  padding: 8px 12px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent; /* default transparent */
-  color: var(--white-color); /* text white like playlist */
-  border-radius: 4px;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  /* Ensure it matches link font size */
-  font-size: var(--font-size-m);
-  font-family: "Inter", sans-serif;
-}
-
-/* Button hover effect */
-.theme-btn:hover {
-  background-color: var(--secondary-color); /* orange on hover */
-  color: var(--white-color);
-  transform: scale(1.05);
-}
-
-/* Dropdown menu */
-.theme-options {
-  display: none;
-  position: absolute;
-  top: 100%; /* right below button */
-  left: 0; /* align with button */
-  min-width: 140px;
-  background-color: var(--bg-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  margin: 4px 0;
-  padding: 0;
-  z-index: 50;
-}
-
-/* Dropdown items */
-.theme-options li {
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-  color: var(--white-color); /* text white */
-  font-size: var(--font-size-m); /* same as playlist */
-}
-
-/* Item hover effect */
-.theme-options li:hover {
-  background-color: var(--secondary-color);
-  color: var(--white-color);
-}
-
-/* Show dropdown when active */
-.theme-dropdown.show .theme-options {
-  display: block;
 }
 
 /* Live Time Display */
