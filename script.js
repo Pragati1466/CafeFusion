@@ -15,6 +15,52 @@ window.addEventListener('load', () => {
   }
 });
 
+//Sample Toast Messages
+const toastMessages = [
+  "Delhi user ordered a Latte",
+  "Mumbai user ordered a Cappuccino",
+  "Bangalore user ordered an Espresso",
+  "Chennai user ordered a Mocha",
+  "Kolkata user ordered an Americano"
+];
+
+//createToast Functionality
+function createToast() {
+  let toast = document.createElement('div');
+  toast.id = 'cafe-toast';
+  toast.style.position = 'fixed';
+  toast.style.bottom = '20px';
+  toast.style.right = '20px';
+  toast.style.background = '#333';
+  toast.style.color = '#fff';
+  toast.style.padding = '12px 24px';
+  toast.style.borderRadius = '8px';
+  toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+  toast.style.fontSize = '1rem';
+  toast.style.opacity = '0';
+  toast.style.transition = 'opacity 0.3s';
+  document.body.appendChild(toast);
+  return toast;
+}
+// Show and hide the toast with a random message
+function showToast() {
+  let toast = document.getElementById('cafe-toast');
+  if (!toast) toast = createToast();
+  // Pick a random message
+  toast.textContent = toastMessages[Math.floor(Math.random() * toastMessages.length)];
+  // Show the toast
+  toast.style.opacity = '1';
+  // Hide after 2 seconds
+  setTimeout(() => {
+    toast.style.opacity = '0';
+  }, 2000);
+}
+// Example: Show a toast when the page loads, or call showToast() after an order
+window.onload = () => {
+  showToast();
+  // change time a/c as you like
+  setInterval(showToast, 5000);
+};
 // THEME SWITCHER FUNCTIONALITY
 function setTheme(themeName) {
   document.body.classList.remove('theme-beige', 'theme-mocha', 'theme-brown');
