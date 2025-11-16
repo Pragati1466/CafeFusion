@@ -1575,8 +1575,19 @@ const quizData = [
     q: "Choose a time of day:",
     options: ["Morning", "Afternoon", "Evening", "Late Night"],
     drinks: ["Filter Coffee", "Iced Latte", "Saffron Milk", "Hot Chocolate"]
+  },
+  {
+    q: "Pick a coffee shop personality:",
+    options: ["Bookworm", "Artist", "Explorer", "Chatterbox"],
+    drinks: ["Cappuccino", "Mocha", "Americano", "Vanilla Latte"]
+  },
+  {
+    q: "What kind of flavors do you enjoy?",
+    options: ["Strong", "Creamy", "Spiced", "Floral"],
+    drinks: ["Espresso Shot", "Cold Brew", "Masala Chai Latte", "Rose Latte"]
   }
 ];
+
 
 let quizIndex = 0;
 let pickedDrinks = [];
