@@ -44,16 +44,24 @@ function createToast() {
   return toast;
 }
 
+// Show and hide the toast with a random message
 function showToast() {
   let toast = document.getElementById('cafe-toast');
   if (!toast) toast = createToast();
+  
+  // Pick a random message
   toast.textContent = toastMessages[Math.floor(Math.random() * toastMessages.length)];
+  
+  // Show the toast
   toast.style.opacity = '1';
+  
+  // Hide after 2 seconds
   setTimeout(() => {
     toast.style.opacity = '0';
   }, 2000);
 }
 
+// Example: Show a toast when the page loads, or call showToast() after an order
 window.onload = () => {
   showToast();
   setInterval(showToast, 5000);
@@ -79,25 +87,31 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  // Live Time Display Function
   function updateLiveTime() {
     const timeElement = document.getElementById("live-time");
     if (!timeElement) return;
     const now = new Date();
 
+    // Format time with AM/PM
     let hours = now.getHours();
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
     const ampm = hours >= 12 ? "PM" : "AM";
 
+    // Convert to 12-hour format
     hours = hours % 12;
-    hours = hours ? hours : 12;
+    hours = hours ? hours : 12; // 0 should be 12
 
+    // Add leading zeros
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
+    // Display time
     timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
   }
 
+  // Update time immediately and then every second
   updateLiveTime();
   setInterval(updateLiveTime, 1000);
 
@@ -461,6 +475,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, animationObserverOptions);
 
   function initializeAnimations() {
+    // Observe feature items
     const featureItems = document.querySelectorAll(".feature-item");
     featureItems.forEach((item, index) => {
       item.style.opacity = "0";
@@ -469,6 +484,7 @@ document.addEventListener("DOMContentLoaded", function() {
       animationObserver.observe(item);
     });
 
+    // Observe gallery items
     const galleryItems = document.querySelectorAll(".gallery-item");
     galleryItems.forEach((item, index) => {
       item.style.opacity = "0";
@@ -477,6 +493,7 @@ document.addEventListener("DOMContentLoaded", function() {
       animationObserver.observe(item);
     });
 
+    // Observe reveal texts
     const revealTexts = document.querySelectorAll(".reveal-text");
     revealTexts.forEach((text, index) => {
       text.style.opacity = "0";
@@ -650,6 +667,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function showNotification(message, type) {
+    // Create notification element
     const notification = document.createElement("div");
     notification.className = `notification ${type}`;
     notification.textContent = message;
@@ -1543,7 +1561,7 @@ function generateHTMLReceipt(customerName, customerAddress) {
               hello@cafefusion.in | www.cafefusion.in
             </div>
           </div>
-          
+           
           <div class="content">
             <div class="invoice-title">INVOICE</div>
             
@@ -1570,12 +1588,12 @@ function generateHTMLReceipt(customerName, customerAddress) {
               </div>
             </div>
           </div>
-          
+           
           <div class="footer">
             <p><strong>Thank you for choosing Café Fusion!</strong></p>
             <p class="footer-note">This is a computer-generated receipt</p>
           </div>
-          
+           
           <button class="print-btn" onclick="window.print()">🖨️ Print Receipt</button>
         </div>
       </body>
@@ -1732,3 +1750,92 @@ document.addEventListener("click", function(e) {
 });
 
 setupCart();
+
+// Mood Quiz Logic
+const quizData = [
+  {
+    q: "How are you feeling today?",
+    options: ["Relaxed", "Energetic", "Sad", "Excited"],
+    drinks: ["Rose Milk", "Cold Coffee", "Cardamom Tea", "Fusion Mocha"]
+  },
+  {
+    q: "Pick a vibe:",
+    options: ["Cozy", "Bold", "Fresh", "Sweet"],
+    drinks: ["Masala Chai", "Espresso", "Lemon Ice Tea", "Caramel Latte"]
+  },
+  {
+    q: "Choose a time of day:",
+    options: ["Morning", "Afternoon", "Evening", "Late Night"],
+    drinks: ["Filter Coffee", "Iced Latte", "Saffron Milk", "Hot Chocolate"]
+  },
+  {
+    q: "Pick a coffee shop personality:",
+    options: ["Bookworm", "Artist", "Explorer", "Chatterbox"],
+    drinks: ["Cappuccino", "Mocha", "Americano", "Vanilla Latte"]
+  },
+  {
+    q: "What kind of flavors do you enjoy?",
+    options: ["Strong", "Creamy", "Spiced", "Floral"],
+    drinks: ["Espresso Shot", "Cold Brew", "Masala Chai Latte", "Rose Latte"]
+  }
+];
+
+
+let quizIndex = 0;
+let pickedDrinks = [];
+
+function loadQuizQuestion() {
+  const q = quizData[quizIndex];
+  const questionEl = document.getElementById("quiz-question");
+  if (questionEl) {
+    questionEl.textContent = q.q;
+    const optionsBox = document.getElementById("quiz-options");
+    optionsBox.innerHTML = "";
+
+    q.options.forEach((option, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = option;
+      btn.onclick = () => selectQuizOption(i);
+      optionsBox.appendChild(btn);
+    });
+  }
+}
+
+function selectQuizOption(i) {
+  pickedDrinks.push(quizData[quizIndex].drinks[i]);
+  quizIndex++;
+
+  if (quizIndex < quizData.length) {
+    loadQuizQuestion();
+  } else {
+    showQuizResult();
+  }
+}
+
+function showQuizResult() {
+  document.getElementById("quiz-options").classList.add("hidden");
+  document.getElementById("quiz-question").classList.add("hidden");
+
+  const drink = pickedDrinks[Math.floor(Math.random() * pickedDrinks.length)];
+  document.getElementById("quiz-drink").textContent = drink;
+
+  document.getElementById("quiz-result").classList.remove("hidden");
+}
+
+// Start Quiz
+loadQuizQuestion();
+
+// Restart Quiz
+const restartQuizBtn = document.getElementById("quiz-restart");
+if (restartQuizBtn) {
+  restartQuizBtn.onclick = () => {
+    quizIndex = 0;
+    pickedDrinks = [];
+
+    document.getElementById("quiz-result").classList.add("hidden");
+    document.getElementById("quiz-question").classList.remove("hidden");
+    document.getElementById("quiz-options").classList.remove("hidden");
+
+    loadQuizQuestion();
+  };
+}
