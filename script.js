@@ -1559,3 +1559,76 @@ document.addEventListener("click", function (e) {
 
 setupCart();
 
+// Mood Quiz Logic
+const quizData = [
+  {
+    q: "How are you feeling today?",
+    options: ["Relaxed", "Energetic", "Sad", "Excited"],
+    drinks: ["Rose Milk", "Cold Coffee", "Cardamom Tea", "Fusion Mocha"]
+  },
+  {
+    q: "Pick a vibe:",
+    options: ["Cozy", "Bold", "Fresh", "Sweet"],
+    drinks: ["Masala Chai", "Espresso", "Lemon Ice Tea", "Caramel Latte"]
+  },
+  {
+    q: "Choose a time of day:",
+    options: ["Morning", "Afternoon", "Evening", "Late Night"],
+    drinks: ["Filter Coffee", "Iced Latte", "Saffron Milk", "Hot Chocolate"]
+  }
+];
+
+let quizIndex = 0;
+let pickedDrinks = [];
+
+function loadQuizQuestion() {
+  const q = quizData[quizIndex];
+  document.getElementById("quiz-question").textContent = q.q;
+
+  const optionsBox = document.getElementById("quiz-options");
+  optionsBox.innerHTML = "";
+
+  q.options.forEach((option, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = option;
+    btn.onclick = () => selectQuizOption(i);
+    optionsBox.appendChild(btn);
+  });
+}
+
+function selectQuizOption(i) {
+  pickedDrinks.push(quizData[quizIndex].drinks[i]);
+  quizIndex++;
+
+  if (quizIndex < quizData.length) {
+    loadQuizQuestion();
+  } else {
+    showQuizResult();
+  }
+}
+
+function showQuizResult() {
+  document.getElementById("quiz-options").classList.add("hidden");
+  document.getElementById("quiz-question").classList.add("hidden");
+
+  const drink = pickedDrinks[Math.floor(Math.random() * pickedDrinks.length)];
+  document.getElementById("quiz-drink").textContent = drink;
+
+  document.getElementById("quiz-result").classList.remove("hidden");
+}
+
+// Start Quiz
+loadQuizQuestion();
+
+// Restart Quiz
+document.getElementById("quiz-restart").onclick = () => {
+  quizIndex = 0;
+  pickedDrinks = [];
+
+  document.getElementById("quiz-result").classList.add("hidden");
+  document.getElementById("quiz-question").classList.remove("hidden");
+  document.getElementById("quiz-options").classList.remove("hidden");
+
+  loadQuizQuestion();
+};
+
