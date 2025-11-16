@@ -5,36 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CafeFusion</title>
-  <!-- Swiper JS CSS Link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <!-- FontAwesome Link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-  <!-- CSS Link -->
   <link rel="stylesheet" href="style.css">
-  <!-- jsPDF Libraries for PDF Generation -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 </head>
 
 <body>
   <div id="loader-wrapper">
     <img src="https://cdn.dribbble.com/userupload/24898076/file/original-0e6fdb1ed026c5d0c908737a6dbfdb42.gif" alt="Loading..." class="loader-gif">
   </div>
-  <!-- Header & Navbar Section -->
+  
   <header class="header" id="header">
     <nav class="nav">
       <a href="#" class="nav-logo">
         <h2 class="logo-text">Coffee</h2>
       </a>
 
-      <!-- Updated Nav Menu Structure -->
       <ul class="nav-menu">
-        <!-- Close button wrapped in LI for better structure -->
         <li class="nav-item nav-close-button">
           <i id="close-menu-button" class="fa-solid fa-xmark"></i>
         </li>
         
-        <!-- Standard Nav Links -->
         <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
         <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
@@ -44,7 +37,17 @@
         <li class="nav-item"><a href="#playlist-vibes" class="nav-link">Playlist</a></li>
         <li class="nav-item"><a href="#mood-quiz" class="nav-link">Quiz time</a></li>
         
-        <!-- Live Time Display moved inside the menu -->
+        <li class="nav-item">
+          <div class="theme-dropdown">
+            <button id="theme-btn" class="theme-btn">Themes</button>
+            <ul class="theme-options">
+              <li onclick="setTheme('theme-beige')">Beige</li>
+              <li onclick="setTheme('theme-mocha')">Mocha</li>
+              <li onclick="setTheme('theme-brown')">Brown</li>
+            </ul>
+          </div>
+        </li>
+        
         <li class="nav-item">
           <div class="live-time-display">
             <i class="fa-regular fa-clock"></i>
@@ -52,23 +55,19 @@
           </div>
         </li>
       </ul>
-      <!-- here we will be adding a cart section for the user -->
-       <div class="cart">
+
+      <div class="cart">
         <i class="fa-solid fa-cart-shopping"></i>
         <span id="cart-count">0</span>
       </div>
 
-        
-      <!-- Hamburger Menu Icon (remains outside) -->
       <i id="open-menu-button" class="fa-solid fa-bars"></i>
     </nav>
   </header> 
-          <div id="cart-panel" class="cart-panel hidden"></div>
+  
+  <div id="cart-panel" class="cart-panel hidden"></div>
   <div id="added"></div>
 
-
-
-  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-diagonal-container">
       <div class="hero-content-wrapper">
@@ -116,7 +115,6 @@
     </div>
   </section>
 
-  <!-- About Us Section -->
   <section class="about-us" id="about">
     <div class="section-container">
       <div class="section-head">
@@ -163,7 +161,6 @@
     </div>
   </section>
 
-  <!-- Projects/Features Section -->
   <section class="features-section" id="features">
     <div class="section-container">
       <div class="section-head">
@@ -226,7 +223,6 @@
             <a href="#coffee-passport" class="feature-link">Explore Cultures</a>
           </div>
         </div>
-
         <div class="col-lg-4 col-sm-6 feature-item" data-index="5">
           <div class="feature-card">
             <div class="feature-icon">
@@ -234,13 +230,104 @@
             </div>
             <h3>AI Coffee Recommender</h3>
             <p>Get personalized coffee recommendations based on your taste preferences and mood.</p>
-            <a href="#ai-recommender" class="feature-link">Get Recommendations</a>
+            <a href="#ai-recommender" class="feature-link" id="ai-recommender-btn">Get Recommendations</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Mood quiz -->
+
+  <section class="order-tracking" id="order-tracking">
+    <div class="order-tracking-container">
+      <div class="section-head">
+        <h1 class="reveal-text">Track Your Order</h1>
+        <p class="reveal-text">See where your coffee is in real-time.</p>
+      </div>
+      <div class="order-input-zone">
+        <input type="text" id="order-number" placeholder="Enter Order # (e.g., CAFE123)">
+        <button id="track-order-btn">Track</button>
+      </div>
+      <div class="order-status-display" id="order-status">
+        <div class="status-step" data-status="received">
+          <i class="fas fa-clipboard-check"></i>
+          <span>Received</span>
+        </div>
+        <div class="status-step" data-status="preparing">
+          <i class="fas fa-blender"></i>
+          <span>Preparing</span>
+        </div>
+        <div class="status-step" data-status="ready">
+          <i class="fas fa-mug-hot"></i>
+          <span>Ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-recommender" id="ai-recommender">
+    <div class="section-container">
+      <div class="section-head">
+        <h1 class="reveal-text">🤖 Brew.AI Recommender</h1>
+        <p class="reveal-text">Answer a few questions and let our "AI" find your perfect coffee vibe.</p>
+      </div>
+      <div class="recommender-wrapper">
+        <form class="recommender-form" id="recommender-form">
+          
+          <div class="form-group">
+            <label for="ai-mood">How are you feeling right now?</label>
+            <select id="ai-mood" name="mood">
+              <option value="happy">😄 Happy & Energetic</option>
+              <option value="tired">😴 Tired & Need a boost</option>
+              <option value="relaxed">😌 Relaxed & Chilling</option>
+              <option value="adventurous">🧐 Feeling Adventurous</option>
+              <option value="focused">💻 Need to focus</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="ai-energy">What's your desired energy level?</label>
+            <select id="ai-energy" name="energy">
+              <option value="low">Caffeine-free</option>
+              <option value="medium">A gentle lift</option>
+              <option value="high">Maximum power!</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ai-flavor">What flavor profile do you crave?</label>
+            <select id="ai-flavor" name="flavor">
+              <option value="sweet">Sweet & Creamy (e.g., Mocha, Lassi)</option>
+              <option value="strong">Strong & Bold (e.g., Espresso, Filter Coffee)</option>
+              <option value="spiced">Spiced & Aromatic (e.g., Masala Chai)</option>
+              <option value="fruity">Fruity & Refreshing (e.g., Iced Teas)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ai-temp">Hot or Cold?</label>
+            <select id="ai-temp" name="temp">
+              <option value="any">No preference</option>
+              <option value="hot">🔥 Hot</option>
+              <option value="cold">❄️ Cold</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn" id="get-recommendation-btn">
+            <span>Find My Brew</span>
+            <i class="fas fa-magic"></i>
+          </button>
+        </form>
+
+        <div class="recommendation-result" id="recommendation-result">
+          <div class="placeholder-text">
+            <i class="fas fa-mug-hot"></i>
+            <p>Your perfect match will appear here...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="mood-quiz" class="mood-quiz-section">
     <div class="section-container">
       <div class="section-head">
@@ -264,7 +351,6 @@
     </div>
   </section>
   
-  <!-- Special Event/Seasonal Offers Section -->
   <section class="special-offers" id="special-offers">
     <h2 class="section-title">Special Event/Seasonal Offers</h2>
     <div class="offers-container">
@@ -295,7 +381,7 @@
       </div>
     </div>
   </section>
-  <!-- Our Menu Section -->
+  
   <section class="menu" id="menu">
     <div class="section-container">
       <div class="section-head">
@@ -322,7 +408,6 @@
       </div>
 
       <div class="menu-wrapper">
-        <!-- Navigation Arrows -->
         <div class="menu-navigation">
           <button class="menu-nav-btn prev">
             <i class="fas fa-chevron-left"></i>
@@ -332,10 +417,8 @@
           </button>
         </div>
 
-        <!-- Menu Grid with Slider -->
         <div class="menu-grid">
           <div class="menu-slider">
-            <!-- Menu Items -->
             <div class="menu-item" data-category="hot">
               <div class="menu-card">
                 <div class="menu-card-front">
@@ -438,7 +521,6 @@
               </div>
             </div>
 
-            <!-- Cold Drinks -->
             <div class="menu-item" data-category="cold">
               <div class="menu-card">
                 <div class="menu-card-front">
@@ -500,7 +582,6 @@
               </div>
             </div>
 
-            <!-- Seasonal Specials -->
             <div class="menu-item" data-category="seasonal">
               <div class="menu-card">
                 <div class="menu-card-front">
@@ -545,18 +626,15 @@
           </div>
         </div>
 
-        <!-- Progress Bar -->
         <div class="menu-progress">
           <div class="menu-progress-bar"></div>
         </div>
 
-        <!-- Navigation Dots -->
         <div class="menu-dots"></div>
       </div>
     </div>
   </section>
 
-  <!-- Playlist Section -->
   <section class="playlist-vibes" id="playlist-vibes">
     <div class="section-container">
       <div class="section-head">
@@ -581,7 +659,6 @@
     </div>
   </section>
 
-  <!-- Testimonial Section -->
   <section class="testimonial" id="testimonial">
     <div class="section-container">
       <div class="section-head">
@@ -709,7 +786,6 @@
     </div>
   </section>
 
-  <!-- Gallery Section -->
   <section class="gallery" id="gallery">
     <div class="section-container">
       <div class="section-head">
@@ -805,9 +881,8 @@
       </div>
     </div>
 
-    <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
-      <span class="close-lightbox">&times;</span>
+      <span class="close-lightbox">×</span>
       <img src="" alt="" class="lightbox-image">
       <div class="lightbox-caption">
         <h3></h3>
@@ -816,7 +891,6 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
   <section class="contact-section" id="contact">
     <div class="section-container">
       <div class="section-head">
@@ -926,12 +1000,10 @@
     </div>
   </section>
 
-  <!-- Subscription Section -->
   <section class="subscription" id="subscription">
     <h2 class="section-title">Subscription Plans</h2>
     <div class="section-container">
       <div class="subscription-container">
-        <!-- Weekly Subscription -->
         <div class="subscription-plan">
           <h3 class="plan-title">Weekly Subscription</h3>
           <p class="plan-price">₹299 / week</p>
@@ -939,7 +1011,6 @@
           <button class="button subscribe-button">Subscribe Now</button>
         </div>
 
-        <!-- Monthly Subscription -->
         <div class="subscription-plan">
           <h3 class="plan-title">Monthly Subscription</h3>
           <p class="plan-price">₹999 / month</p>
@@ -947,7 +1018,6 @@
           <button class="button subscribe-button">Subscribe Now</button>
         </div>
 
-        <!-- Yearly Subscription (with discount) -->
         <div class="subscription-plan">
           <h3 class="plan-title">Yearly Subscription</h3>
           <p class="plan-price">₹11,499 / year (Save 20%)</p>
@@ -958,7 +1028,6 @@
     </div>
   </section>
 
-  <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-grid">
@@ -1029,7 +1098,7 @@
 
       <div class="footer-bottom">
         <div class="footer-legal">
-          <p>&copy; 2025 Café Fusion. All Rights Reserved.</p>
+          <p>© 2025 Café Fusion. All Rights Reserved.</p>
           <div class="footer-payments">
             <i class="fab fa-cc-visa"></i>
             <i class="fab fa-cc-mastercard"></i>
@@ -1042,13 +1111,10 @@
     </div>
   </footer>
 
-  <!-- made with love badge -->
-   <div class="love-badge">Made With ❤️</div>
+  <div class="love-badge">Made With ❤️</div>
 
-  <!-- Linking Swiper JS Link -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <!-- Linking custoom script -->
   <script src="script.js"></script>
 </body>
 

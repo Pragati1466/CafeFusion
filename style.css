@@ -72,6 +72,37 @@
   --site-max-width: 1300px;
 }
 
+/* Beige Theme */
+.theme-beige {
+  --bg-color: #F5E6D3;
+  --text-color: #c0551f;
+  --primary-color: #915519;
+  --secondary-color: #f3961c;
+  --primary-color-rgb: 145, 85, 25;
+  --text-color-rgb: 192, 85, 31;
+}
+
+/* Mocha Theme */
+.theme-mocha {
+  --bg-color: #D2B48C;
+  --text-color: #252525;
+  --primary-color: #5C4033;
+  --secondary-color: #f3961c;
+  --primary-color-rgb: 92, 64, 51;
+  --text-color-rgb: 37, 37, 37;
+}
+
+/* Brown Theme */
+.theme-brown {
+  --bg-color: #8B4513;
+  --text-color: #fff;
+  --primary-color: #3b141c;
+  --secondary-color: #f3961c;
+  --primary-color-rgb: 59, 20, 28;
+  --text-color-rgb: 255, 255, 255;
+}
+
+
 html {
   scroll-behavior: smooth;
   /* Prevent horizontal scroll */
@@ -1366,22 +1397,24 @@ ul {
 
 .section-head {
   margin-bottom: 3rem; /* Added */
+  text-align: center; /* Added */
 }
 
 .section-head h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1f3959;
+  color: var(--primary-color);
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .section-head p {
   font-size: 1.1rem;
-  color: #4a4a4a;
+  color: var(--text-color);
   text-align: center;
   max-width: 800px;
   margin: 0 auto 3rem;
+  opacity: 0.9;
 }
 
 /* Testimonial Section */
@@ -2901,6 +2934,143 @@ ul {
     width: 100%;
   }
 }
+
+/* --- AI Recommender Section --- */
+.ai-recommender {
+  padding: 4rem 0;
+  background: linear-gradient(135deg,
+      var(--hero-bg-beige) 0%,
+      var(--hero-bg-mocha) 100%);
+}
+
+.ai-recommender .section-head p {
+  margin-bottom: 0; /* Override */
+}
+
+.recommender-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+.recommender-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000; /* Changed to black */
+}
+
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  color: #000; /* Changed to black */
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
+}
+
+/* Style the submit button (re-using .submit-btn) */
+.recommender-form .submit-btn {
+  margin-top: 1rem;
+  background: var(--primary-color);
+}
+
+.recommender-form .submit-btn:hover {
+  background: var(--secondary-color);
+}
+
+.recommendation-result {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 300px; /* Ensure it has height */
+  transition: all 0.3s ease;
+}
+
+.recommendation-result .placeholder-text {
+  color: #000; /* Changed to black */
+  opacity: 0.6;
+}
+
+.recommendation-result .placeholder-text i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* When result is shown */
+.recommendation-result.loading {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.recommendation-result h3 {
+  font-size: 1.5rem;
+  color: #000; /* Changed to black */
+  margin-bottom: 0.5rem;
+}
+
+.recommendation-result h2 {
+  color: #000; /* Added for the main result title */
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.recommendation-result p {
+  font-size: 1.1rem;
+  color: #000; /* Changed to black */
+  line-height: 1.6;
+}
+
+.recommendation-result .result-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 992px) {
+  .recommender-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .recommendation-result {
+    min-height: 250px;
+  }
+}
+
 #mood-quiz {
   padding: 80px 0;
   background: linear-gradient(
