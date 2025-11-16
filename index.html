@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <!-- CSS Link -->
   <link rel="stylesheet" href="style.css">
+  <!-- jsPDF Libraries for PDF Generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 </head>
 
 <body>
@@ -48,11 +51,21 @@
           </div>
         </li>
       </ul>
-      
+      <!-- here we will be adding a cart section for the user -->
+       <div class="cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+      </div>
+
+        
       <!-- Hamburger Menu Icon (remains outside) -->
       <i id="open-menu-button" class="fa-solid fa-bars"></i>
     </nav>
-  </header>
+  </header> 
+          <div id="cart-panel" class="cart-panel hidden"></div>
+  <div id="added"></div>
+
+
 
   <!-- Hero Section -->
   <section class="hero" id="home">
