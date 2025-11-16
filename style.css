@@ -902,12 +902,12 @@ ul {
   border-radius: 20px;
   border: 1px solid transparent;
   outline: none;
-  padding: 10px 18px;
+  padding: 10px 40px 10px 18px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1) inset; 
 }
 .search-menu i{
   position: absolute;
-  right: 6px;
+  right: 12px; 
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none; /* icon stays, no click issue */
