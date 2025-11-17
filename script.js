@@ -1884,26 +1884,3 @@ if (themeBtn) {
     }
   });
 }
-// cursor
-const bean = document.getElementById("bean-cursor");
-
-let mouseX = 0, mouseY = 0;
-let currentX = 0, currentY = 0;
-
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-function smoothFollow() {
-  // 0.15 = smoothness (lower = smoother)
-  currentX += (mouseX - currentX) * 0.15;
-  currentY += (mouseY - currentY) * 0.15;
-
-  bean.style.left = currentX + "px";
-  bean.style.top = currentY + "px";
-
-  requestAnimationFrame(smoothFollow);
-}
-
-smoothFollow();
