@@ -1884,30 +1884,26 @@ if (themeBtn) {
     }
   });
 }
+// cursor
+const bean = document.getElementById("bean-cursor");
 
-const facts = [
-  "Coffee beans are actually seeds.",
-  "Cold brew is less acidic than hot coffee.",
-  "Espresso means 'pressed out' in Italian.",
-  "Adding milk can reduce coffee bitterness.",
-  "Coffee is the second most traded commodity after oil.",
-  "A goat herder discovered coffee after noticing energetic goats.",
-  "Light roast coffee actually has more caffeine than dark roast.",
-  "Americans drink 400 million cups of coffee every day.",
-  "Coffee stays warm 20% longer in a mug than in a paper cup.",
-  "The first webcam was created to monitor a coffee pot.",
-];
-let factIndex = 0;
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
 
-function updateFact() {
-  const factBox = document.getElementById("fact-box");
-  factBox.innerText = facts[factIndex];
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
 
-  factIndex = (factIndex + 1) % facts.length; // loops back to start
+function smoothFollow() {
+  // 0.15 = smoothness (lower = smoother)
+  currentX += (mouseX - currentX) * 0.15;
+  currentY += (mouseY - currentY) * 0.15;
+
+  bean.style.left = currentX + "px";
+  bean.style.top = currentY + "px";
+
+  requestAnimationFrame(smoothFollow);
 }
 
-// show first fact immediately
-updateFact();
-
-// change every 3 seconds
-setInterval(updateFact, 3000);
+smoothFollow();
