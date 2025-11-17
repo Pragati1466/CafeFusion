@@ -31,15 +31,16 @@
         <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
         <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
-        <li class="nav-item"><a href="#testimonial" class="nav-link">Testimonial</a></li>
+        <li class="nav-item"><a href="#testimonial" class="nav-link">Reviews</a></li>
         <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li class="nav-item"><a href="#virtual-tour" class="nav-link">360°Tour</a></li> 
+        <li class="nav-item"><a href="#mood-quiz" class="nav-link">Quiz time</a></li>
         <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
         <li class="nav-item"><a href="#playlist-vibes" class="nav-link">Playlist</a></li>
-        <li class="nav-item"><a href="#mood-quiz" class="nav-link">Quiz time</a></li>
         
         <li class="nav-item">
           <div class="theme-dropdown">
-            <button id="theme-btn" class="theme-btn">Themes</button>
+            <button id="theme-btn" class="theme-btn" title="Change Theme"><i class="fa-solid fa-palette"></i></button>
             <ul class="theme-options">
               <li onclick="setTheme('theme-beige')">Beige</li>
               <li onclick="setTheme('theme-mocha')">Mocha</li>
@@ -50,7 +51,6 @@
         
         <li class="nav-item">
           <div class="live-time-display">
-            <i class="fa-regular fa-clock"></i>
             <span id="live-time"></span>
           </div>
         </li>
@@ -996,6 +996,32 @@
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.555984455474!2d77.19644431499999!3d28.535516482000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1927f3f3f3f3%3A0x6dabf5b1f2a3f3f3!2sCaf%C3%A9%20Fusion%2C%2042%20Hauz%20Khas%20Village%2C%20Hauz%20Khas%2C%20New%20Delhi%2C%20Delhi%20110016!5e0!3m2!1sen!2sin!4v1669981111157!5m2!1sen!2sin"
           width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
         </iframe>
+      </div>
+    </div>
+  </section>
+  <section class="virtual-tour" id="virtual-tour">
+    <div class="section-container">
+      <div class="section-head">
+        <h1 class="reveal-text">Step Inside The Vibe</h1>
+        <p class="reveal-text">Experience our ambiance virtually before you visit.</p>
+      </div>
+
+      <div class="tour-wrapper reveal-text">
+        <div class="tour-frame-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!4v1550915043882!6m8!1m7!1sCAoSLEFGMVFpcE9XWlFwX2xQbW1sX1lMcWxQbW1sX1lMcWxQbW1sX1lMcWxQbW1sX1lM!2m2!1d40.7413582!2d-74.0046499!3f254.05!4f-11.44!5f0.7820865974627469" 
+            width="100%" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="tour-overlay-hint">
+          <i class="fas fa-hand-pointer"></i>
+          <span>Drag to look around</span>
+        </div>
       </div>
     </div>
   </section>
