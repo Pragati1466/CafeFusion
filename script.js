@@ -1884,3 +1884,53 @@ if (themeBtn) {
     }
   });
 }
+
+// Scroll progress bar + sticky header visual state
+(function() {
+  const progressBar = document.getElementById('scroll-progress');
+  const header = document.querySelector('.header') || document.getElementById('header');
+  let ticking = false;
+
+  function updateProgress() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const docHeight = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+    const winHeight = window.innerHeight || document.documentElement.clientHeight;
+    const scrollable = Math.max(docHeight - winHeight, 1);
+    const percent = Math.min(100, Math.max(0, (scrollTop / scrollable) * 100));
+    if (progressBar) progressBar.style.width = percent + '%';
+
+    // toggle header visual state
+    if (header) {
+      if (scrollTop > 10) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // initialize on load
+  window.addEventListener('load', updateProgress);
+  window.addEventListener('resize', updateProgress);
+})();
+const progressWrap = document.getElementById("scroll-progress-wrap");
+const header = document.querySelector(".header");
+
+function updateProgressBarPosition() {
+  const headerHeight = header.offsetHeight;
+  progressWrap.style.top = headerHeight + "px";
+}
+
+window.addEventListener("resize", updateProgressBarPosition);
+window.addEventListener("load", updateProgressBarPosition);
+updateProgressBarPosition(); // run once
