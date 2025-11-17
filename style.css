@@ -437,7 +437,7 @@ ul {
 
   .floating-emoji.sparkle {
     top: 45px;
-    right: 470px;
+    right: 25 px;
   }
 
   .floating-emoji.camera {
@@ -3358,113 +3358,164 @@ ul {
     background: rgba(255, 255, 255, 0.2);
   }
 }
-.virtual-tour {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, var(--hero-bg-beige) 0%, var(--hero-bg-mocha) 100%);
+/* ===== HERO SECTION ===== */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px;
+    position: relative;
+    min-height: 95vh;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
 }
 
-.virtual-tour .section-head {
-  text-align: center;
-  margin-bottom: 3rem;
+/* Hero container */
+.hero-diagonal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
-.virtual-tour .section-head p {
-  margin-bottom: 0;
+/* Text area */
+.hero-text-zone {
+    flex: 1 1 500px;
+    max-width: 600px;
+    margin-bottom: 40px;
 }
 
-.tour-wrapper {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  border-radius: 20px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+/* Title */
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: #3a2e2a;
 }
 
-.tour-frame-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 15px;
-  padding-bottom: 56.25%;
-  height: 0;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+/* Subtitle — bigger + bolder */
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 35px;
+    color: #4a3f3c;
 }
 
-.tour-frame-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* CTA buttons */
+.hero-ctas {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.tour-overlay-hint {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
-  font-size: 0.9rem;
-  backdrop-filter: blur(4px);
-  animation: floatHint 3s ease-in-out infinite;
+.hero-cta {
+    padding: 14px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-@keyframes floatHint {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+.hero-cta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
 }
 
-@media (max-width: 768px) {
-  .tour-frame-container {
-    padding-bottom: 100%;
-  }
+.start-sippin {
+    background-color: #6f4e37;
+    color: white;
 }
 
-.nav .nav-menu {
-  gap: 5px;
+.our-playlist {
+    background-color: #f8b500;
+    color: white;
 }
 
-.nav .nav-menu .nav-item .nav-link {
-  padding: 8px 12px;
-  font-size: 0.95rem;
+/* Floating emoji row — original perfect alignment */
+.floating-elements {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
 }
 
-.theme-btn {
-  padding: 8px;
-  font-size: 1rem;
+.floating-emoji {
+    font-size: 2.3rem;
 }
 
-@media (max-width: 1200px) {
-  .nav .nav-menu {
-    gap: 2px;
-  }
-  .nav .nav-menu .nav-item .nav-link {
-    padding: 8px 8px;
-    font-size: 0.9rem;
-  }
-}
-#scroll-progress-wrap {
-  position: fixed;
-  top: 0; /* JS will override this automatically */
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: transparent;
-  z-index: 99999;
-  pointer-events: none;
+/* Visual zone */
+.hero-visual-zone {
+    flex: 1 1 400px;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
-#scroll-progress {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #ffd89b, #f06d06);
-  transition: width 120ms linear;
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 1024px) {
+    .hero {
+        padding: 70px 20px;
+    }
+
+    .hero-title {
+        font-size: 2.7rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .floating-emoji {
+        font-size: 2rem;
+    }
 }
+
+@media screen and (max-width: 768px) {
+    .hero-diagonal-container {
+        flex-direction: column;
+    }
+
+    .hero-ctas {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-visual-zone {
+        margin-top: 25px;
+    }
+}
+/* Floating sparkle emoji — positioned to side, not over text */
+.floating-emoji.sparkle {
+    position: absolute;
+    top: 20px;      /* adjust vertical position */
+    right: 25px;    /* distance from right edge */
+    font-size: 2.5rem;  /* adjust size if needed */
+    z-index: 2;     /* ensures it stays above background but below main text */
+    pointer-events: none; /* emoji won't block clicks */
+    animation: float 4s ease-in-out infinite; /* optional floating animation */
+}
+
+/* Optional floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
