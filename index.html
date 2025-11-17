@@ -1,5 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CafeFusion</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  </head>
+
+  <body> 
+    <div id="loader-wrapper">
+      <img
+        src="https://cdn.dribbble.com/userupload/24898076/file/original-0e6fdb1ed026c5d0c908737a6dbfdb42.gif"
+        alt="Loading..."
+        class="loader-gif"
+      />
+    </div>
+    
+    <!-- cursor -->
+    <img src="./images/coffe-bean-cursor.png" id="bean-cursor" alt="cursor" />
+    <header class="header" id="header">
+      <nav class="nav">
+        <a href="#" class="nav-logo">
+          <h2 class="logo-text">Coffee</h2>
+        </a>
+
+        <ul class="nav-menu">
+          <li class="nav-item nav-close-button">
+            <i id="close-menu-button" class="fa-solid fa-xmark"></i>
+          </li>
+
+          <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+          <li class="nav-item">
+            <a href="#testimonial" class="nav-link">Testimonial</a>
+          </li>
+          <li class="nav-item">
+            <a href="#gallery" class="nav-link">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="#playlist-vibes" class="nav-link">Playlist</a>
+          </li>
+          <li class="nav-item">
+            <a href="#mood-quiz" class="nav-link">Quiz time</a>
+          </li>
+
+          <li class="nav-item">
+            <div class="theme-dropdown">
+              <button id="theme-btn" class="theme-btn">Themes</button>
+              <ul class="theme-options">
+                <li onclick="setTheme('theme-beige')">Beige</li>
+                <li onclick="setTheme('theme-mocha')">Mocha</li>
+                <li onclick="setTheme('theme-brown')">Brown</li>
+              </ul>
+            </div>
+          </li>
 
 <head>
   <meta charset="UTF-8">
@@ -31,15 +99,16 @@
         <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
         <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
-        <li class="nav-item"><a href="#testimonial" class="nav-link">Testimonial</a></li>
+        <li class="nav-item"><a href="#testimonial" class="nav-link">Reviews</a></li>
         <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li class="nav-item"><a href="#virtual-tour" class="nav-link">360°Tour</a></li> 
+        <li class="nav-item"><a href="#mood-quiz" class="nav-link">Quiz time</a></li>
         <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
         <li class="nav-item"><a href="#playlist-vibes" class="nav-link">Playlist</a></li>
-        <li class="nav-item"><a href="#mood-quiz" class="nav-link">Quiz time</a></li>
         
         <li class="nav-item">
           <div class="theme-dropdown">
-            <button id="theme-btn" class="theme-btn">Themes</button>
+            <button id="theme-btn" class="theme-btn" title="Change Theme"><i class="fa-solid fa-palette"></i></button>
             <ul class="theme-options">
               <li onclick="setTheme('theme-beige')">Beige</li>
               <li onclick="setTheme('theme-mocha')">Mocha</li>
@@ -50,7 +119,6 @@
         
         <li class="nav-item">
           <div class="live-time-display">
-            <i class="fa-regular fa-clock"></i>
             <span id="live-time"></span>
           </div>
         </li>
@@ -64,10 +132,11 @@
       <i id="open-menu-button" class="fa-solid fa-bars"></i>
     </nav>
   </header> 
-  
+  <div id="scroll-progress-wrap">
+    <div id="scroll-progress"></div>
+ </div>
   <div id="cart-panel" class="cart-panel hidden"></div>
   <div id="added"></div>
-
   <section class="hero" id="home">
     <div class="hero-diagonal-container">
       <div class="hero-content-wrapper">
@@ -84,918 +153,1212 @@
             </button>
           </div>
 
-          <div class="floating-elements">
-            <div class="floating-emoji coffee">☕</div>
-            <div class="floating-emoji sparkle">✨</div>
-            <div class="floating-emoji camera">📸</div>
-          </div>
+        <div class="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
         </div>
 
-        <div class="hero-visual-zone">
-          <div class="latte-art-blob">
-            <img src="https://gifdb.com/images/high/hot-coffee-latte-art-swirl-5xvh5qdxjjp5loba.gif"
-              alt="Latte Art Swirl" class="latte-image">
-            <div class="latte-steam"></div>
+        <i id="open-menu-button" class="fa-solid fa-bars"></i>
+      </nav>
+    </header>
+
+    <div id="cart-panel" class="cart-panel hidden"></div>
+    <div id="added"></div>
+
+    <section class="hero" id="home">
+      <div class="hero-diagonal-container">
+        <div class="hero-content-wrapper">
+          <div class="hero-text-zone">
+            <h1 class="hero-title">Sippin' Aesthetic, Pourin' Vibes</h1>
+            <p class="hero-subtitle">
+              Step into the brewverse — where the beans are bold & the mood is
+              bolder
+            </p>
+
+            <div class="hero-ctas">
+              <button class="hero-cta start-sippin">
+                <span>☕ Start Sippin'</span>
+              </button>
+              <button class="hero-cta our-playlist" id="playlist-btn">
+                <span>🎧 Our Chill Playlist</span>
+              </button>
+            </div>
+
+            <div class="floating-elements">
+              <div class="floating-emoji coffee">☕</div>
+              <div class="floating-emoji sparkle">✨</div>
+              <div class="floating-emoji camera">📸</div>
+            </div>
           </div>
 
-          <div class="glassmorphic-menu-preview">
-            <h4>Today's Brew</h4>
-            <div class="menu-preview-item">
+          <div class="hero-visual-zone">
+            <div class="latte-art-blob">
               <img
-                src="https://toppng.com/uploads/preview/coffee-svg-png-icon-free-download-coffee-icon-vector-115630823923jqzwmnp9y.png"
-                alt="Coffee Icon">
-              <div class="item-details">
-                <h5>Fusion Mocha Madness</h5>
-                <p>Chocolate meets innovation</p>
+                src="https://gifdb.com/images/high/hot-coffee-latte-art-swirl-5xvh5qdxjjp5loba.gif"
+                alt="Latte Art Swirl"
+                class="latte-image"
+              />
+              <div class="latte-steam"></div>
+            </div>
+
+            <div class="glassmorphic-menu-preview">
+              <h4>Today's Brew</h4>
+              <div class="menu-preview-item">
+                <img
+                  src="https://toppng.com/uploads/preview/coffee-svg-png-icon-free-download-coffee-icon-vector-115630823923jqzwmnp9y.png"
+                  alt="Coffee Icon"
+                />
+                <div class="item-details">
+                  <h5>Fusion Mocha Madness</h5>
+                  <p>Chocolate meets innovation</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="about-us" id="about">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text about-main-title">✨ How It All Started</h1>
-        <p class="reveal-text about-subtitle">Because coffee's just the start of our story.</p>
-      </div>
-
-      <div class="about-container">
-        <div class="about-image-wrapper">
-          <img src="https://i.pinimg.com/736x/a5/f9/56/a5f956e2c1d564aa00104886f8f8fa65.jpg" alt="Café Fusion Interior"
-            class="about-image" loading="lazy">
-          <div class="image-overlay"></div>
+    <section class="about-us" id="about">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text about-main-title">✨ How It All Started</h1>
+          <p class="reveal-text about-subtitle">
+            Because coffee's just the start of our story.
+          </p>
         </div>
 
-        <div class="about-text-wrapper">
-          <h2 class="section-title">More Than Just Coffee—It's a Vibe</h2>
+        <div class="about-container">
+          <div class="about-image-wrapper">
+            <img
+              src="https://i.pinimg.com/736x/a5/f9/56/a5f956e2c1d564aa00104886f8f8fa65.jpg"
+              alt="Café Fusion Interior"
+              class="about-image"
+              loading="lazy"
+            />
+            <div class="image-overlay"></div>
+          </div>
 
-          <div class="about-description">
-            <p>At Café Fusion, we're more than just coffee—it's a vibe. A place where stories brew and memories are
-              made.</p>
+          <div class="about-text-wrapper">
+            <h2 class="section-title">More Than Just Coffee—It's a Vibe</h2>
 
-            <p>🌱 We care about every bean—and the planet it comes from. Born from a love for rich flavors and
-              meaningful connections, Café Fusion started as a dream to bring people together over the perfect cup.</p>
+            <div class="about-description">
+              <p>
+                At Café Fusion, we're more than just coffee—it's a vibe. A place
+                where stories brew and memories are made.
+              </p>
 
-            <div class="about-values">
-              <div class="value-card">
-                <h3>Sustainability</h3>
-                <p>We source our beans responsibly, ensuring every sip supports ethical farming.</p>
+              <p>
+                🌱 We care about every bean—and the planet it comes from. Born
+                from a love for rich flavors and meaningful connections, Café
+                Fusion started as a dream to bring people together over the
+                perfect cup.
+              </p>
+
+              <div class="about-values">
+                <div class="value-card">
+                  <h3>Sustainability</h3>
+                  <p>
+                    We source our beans responsibly, ensuring every sip supports
+                    ethical farming.
+                  </p>
+                </div>
+
+                <div class="value-card">
+                  <h3>Community</h3>
+                  <p>
+                    Our space is a hub for local artists, thinkers, and
+                    changemakers.
+                  </p>
+                </div>
+
+                <div class="value-card">
+                  <h3>Innovation</h3>
+                  <p>
+                    Constantly experimenting with flavors and brewing
+                    techniques.
+                  </p>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <div class="value-card">
-                <h3>Community</h3>
-                <p>Our space is a hub for local artists, thinkers, and changemakers.</p>
+    <section class="features-section" id="features">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text">Our Innovative Features</h1>
+          <p class="reveal-text">
+            Discover how Café Fusion is redefining your coffee experience
+          </p>
+        </div>
+
+        <div class="row features-grid">
+          <div class="col-lg-4 col-sm-6 feature-item" data-index="0">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-leaf"></i>
               </div>
+              <h3>Sustainable Sourcing</h3>
+              <p>
+                100% traceable beans from ethical farms, supporting local
+                communities and environmental conservation.
+              </p>
+              <a href="#" class="feature-link">Learn More</a>
+            </div>
+          </div>
 
-              <div class="value-card">
-                <h3>Innovation</h3>
-                <p>Constantly experimenting with flavors and brewing techniques.</p>
+          <div class="col-lg-4 col-sm-6 feature-item" data-index="1">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-mobile-alt"></i>
               </div>
+              <h3>Order Tracking</h3>
+              <p>
+                Real-time coffee order tracking with personalized updates and
+                estimated preparation time.
+              </p>
+              <a href="#order-tracking" class="feature-link"
+                >Track Your Order</a
+              >
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-6 feature-item" data-index="2">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-flask"></i>
+              </div>
+              <h3>Custom Brew Lab</h3>
+              <p>
+                Personalize your coffee with our interactive brew customization
+                tool. Create your perfect blend.
+              </p>
+              <a href="#brew-lab" class="feature-link">Start Brewing</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-6 feature-item" data-index="3">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-gift"></i>
+              </div>
+              <h3>Loyalty Program</h3>
+              <p>
+                Earn beans, get exclusive rewards, and enjoy personalized offers
+                with our digital loyalty program.
+              </p>
+              <a href="#loyalty" class="feature-link">Join Now</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-6 feature-item" data-index="4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-globe"></i>
+              </div>
+              <h3>Global Coffee Passport</h3>
+              <p>
+                Explore coffee cultures worldwide through our curated
+                international coffee experience.
+              </p>
+              <a href="#coffee-passport" class="feature-link"
+                >Explore Cultures</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 feature-item" data-index="5">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-robot"></i>
+              </div>
+              <h3>AI Coffee Recommender</h3>
+              <p>
+                Get personalized coffee recommendations based on your taste
+                preferences and mood.
+              </p>
+              <a
+                href="#ai-recommender"
+                class="feature-link"
+                id="ai-recommender-btn"
+                >Get Recommendations</a
+              >
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="features-section" id="features">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text">Our Innovative Features</h1>
-        <p class="reveal-text">Discover how Café Fusion is redefining your coffee experience</p>
-      </div>
-
-      <div class="row features-grid">
-        <div class="col-lg-4 col-sm-6 feature-item" data-index="0">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <h3>Sustainable Sourcing</h3>
-            <p>100% traceable beans from ethical farms, supporting local communities and environmental conservation.</p>
-            <a href="#" class="feature-link">Learn More</a>
-          </div>
+    <section class="order-tracking" id="order-tracking">
+      <div class="order-tracking-container">
+        <div class="section-head">
+          <h1 class="reveal-text">Track Your Order</h1>
+          <p class="reveal-text">See where your coffee is in real-time.</p>
         </div>
-
-        <div class="col-lg-4 col-sm-6 feature-item" data-index="1">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
-            <h3>Order Tracking</h3>
-            <p>Real-time coffee order tracking with personalized updates and estimated preparation time.</p>
-            <a href="#order-tracking" class="feature-link">Track Your Order</a>
-          </div>
+        <div class="order-input-zone">
+          <input
+            type="text"
+            id="order-number"
+            placeholder="Enter Order # (e.g., CAFE123)"
+          />
+          <button id="track-order-btn">Track</button>
         </div>
-
-        <div class="col-lg-4 col-sm-6 feature-item" data-index="2">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-flask"></i>
-            </div>
-            <h3>Custom Brew Lab</h3>
-            <p>Personalize your coffee with our interactive brew customization tool. Create your perfect blend.</p>
-            <a href="#brew-lab" class="feature-link">Start Brewing</a>
+        <div class="order-status-display" id="order-status">
+          <div class="status-step" data-status="received">
+            <i class="fas fa-clipboard-check"></i>
+            <span>Received</span>
           </div>
-        </div>
-
-        <div class="col-lg-4 col-sm-6 feature-item" data-index="3">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-gift"></i>
-            </div>
-            <h3>Loyalty Program</h3>
-            <p>Earn beans, get exclusive rewards, and enjoy personalized offers with our digital loyalty program.</p>
-            <a href="#loyalty" class="feature-link">Join Now</a>
+          <div class="status-step" data-status="preparing">
+            <i class="fas fa-blender"></i>
+            <span>Preparing</span>
           </div>
-        </div>
-
-        <div class="col-lg-4 col-sm-6 feature-item" data-index="4">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-globe"></i>
-            </div>
-            <h3>Global Coffee Passport</h3>
-            <p>Explore coffee cultures worldwide through our curated international coffee experience.</p>
-            <a href="#coffee-passport" class="feature-link">Explore Cultures</a>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 feature-item" data-index="5">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-robot"></i>
-            </div>
-            <h3>AI Coffee Recommender</h3>
-            <p>Get personalized coffee recommendations based on your taste preferences and mood.</p>
-            <a href="#ai-recommender" class="feature-link" id="ai-recommender-btn">Get Recommendations</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="order-tracking" id="order-tracking">
-    <div class="order-tracking-container">
-      <div class="section-head">
-        <h1 class="reveal-text">Track Your Order</h1>
-        <p class="reveal-text">See where your coffee is in real-time.</p>
-      </div>
-      <div class="order-input-zone">
-        <input type="text" id="order-number" placeholder="Enter Order # (e.g., CAFE123)">
-        <button id="track-order-btn">Track</button>
-      </div>
-      <div class="order-status-display" id="order-status">
-        <div class="status-step" data-status="received">
-          <i class="fas fa-clipboard-check"></i>
-          <span>Received</span>
-        </div>
-        <div class="status-step" data-status="preparing">
-          <i class="fas fa-blender"></i>
-          <span>Preparing</span>
-        </div>
-        <div class="status-step" data-status="ready">
-          <i class="fas fa-mug-hot"></i>
-          <span>Ready</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ai-recommender" id="ai-recommender">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text">🤖 Brew.AI Recommender</h1>
-        <p class="reveal-text">Answer a few questions and let our "AI" find your perfect coffee vibe.</p>
-      </div>
-      <div class="recommender-wrapper">
-        <form class="recommender-form" id="recommender-form">
-          
-          <div class="form-group">
-            <label for="ai-mood">How are you feeling right now?</label>
-            <select id="ai-mood" name="mood">
-              <option value="happy">😄 Happy & Energetic</option>
-              <option value="tired">😴 Tired & Need a boost</option>
-              <option value="relaxed">😌 Relaxed & Chilling</option>
-              <option value="adventurous">🧐 Feeling Adventurous</option>
-              <option value="focused">💻 Need to focus</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="ai-energy">What's your desired energy level?</label>
-            <select id="ai-energy" name="energy">
-              <option value="low">Caffeine-free</option>
-              <option value="medium">A gentle lift</option>
-              <option value="high">Maximum power!</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="ai-flavor">What flavor profile do you crave?</label>
-            <select id="ai-flavor" name="flavor">
-              <option value="sweet">Sweet & Creamy (e.g., Mocha, Lassi)</option>
-              <option value="strong">Strong & Bold (e.g., Espresso, Filter Coffee)</option>
-              <option value="spiced">Spiced & Aromatic (e.g., Masala Chai)</option>
-              <option value="fruity">Fruity & Refreshing (e.g., Iced Teas)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="ai-temp">Hot or Cold?</label>
-            <select id="ai-temp" name="temp">
-              <option value="any">No preference</option>
-              <option value="hot">🔥 Hot</option>
-              <option value="cold">❄️ Cold</option>
-            </select>
-          </div>
-
-          <button type="submit" class="submit-btn" id="get-recommendation-btn">
-            <span>Find My Brew</span>
-            <i class="fas fa-magic"></i>
-          </button>
-        </form>
-
-        <div class="recommendation-result" id="recommendation-result">
-          <div class="placeholder-text">
+          <div class="status-step" data-status="ready">
             <i class="fas fa-mug-hot"></i>
-            <p>Your perfect match will appear here...</p>
+            <span>Ready</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="mood-quiz" class="mood-quiz-section">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text">Brew Your Mood Quiz</h1>
-        <p class="reveal-text">Find the drink that matches your vibe today</p>
-      </div>
-  
-      <div class="quiz-box">
-        <h2 id="quiz-question" class="quiz-question">Loading question...</h2>
-  
-        <div id="quiz-options" class="quiz-options"></div>
-  
-        <div id="quiz-result" class="quiz-result hidden">
-          <h2>Your Perfect Brew Is:</h2>
-          <p id="quiz-drink" class="quiz-drink"></p>
-        
-          <button id="quiz-restart" class="quiz-restart-btn">Brew another mood?</button>
+    <section class="ai-recommender" id="ai-recommender">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text">🤖 Brew.AI Recommender</h1>
+          <p class="reveal-text">
+            Answer a few questions and let our "AI" find your perfect coffee
+            vibe.
+          </p>
         </div>
-        
-      </div>
-    </div>
-  </section>
-  
-  <section class="special-offers" id="special-offers">
-    <h2 class="section-title">Special Event/Seasonal Offers</h2>
-    <div class="offers-container">
-      <div class="offer-item" id="diwali-offer">
-        <img src="images/diwali.png" alt="Diwali Offer" class="offer-image">
-        <h3 class="offer-title">Diwali Special</h3>
-        <p class="offer-description">Celebrate Diwali with 20% off on our exclusive products!</p>
-      </div>
-      <div class="offer-item" id="christmas-offer">
-        <img src="images/christmas.png" alt="Christmas Offer" class="offer-image">
-        <h3 class="offer-title">Christmas Special</h3>
-        <p class="offer-description">Enjoy Christmas with a 25% discount on all items!</p>
-      </div>
-      <div class="offer-item" id="newyear-offer">
-        <img src="images/newyear.png" alt="New Year Offer" class="offer-image">
-        <h3 class="offer-title">New Year's Offer</h3>
-        <p class="offer-description">Ring in the new year with a flat 30% discount!</p>
-      </div>
-      <div class="offer-item" id="holi-offer">
-        <img src="images/holi.png" alt="Holi Offer" class="offer-image">
-        <h3 class="offer-title">Holi Special</h3>
-        <p class="offer-description">Celebrate Holi with 15% off on colorful products!</p>
-      </div>
-      <div class="offer-item" id="rakhi-offer">
-        <img src="images/rakhi.png" alt="Raksha Bandhan Offer" class="offer-image">
-        <h3 class="offer-title">Raksha Bandhan Special</h3>
-        <p class="offer-description">Surprise your siblings with a special Rakhi discount of 10%!</p>
-      </div>
-    </div>
-  </section>
-  
-  <section class="menu" id="menu">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text">Our Vibe Menu</h1>
-        <p class="reveal-text">✨ Discover your next favorite drink ✨</p>
-      </div>
-      <div class="search-menu">
-        <input type="search" id="searchMenu" placeholder="Enter Your Dish">
-        <i class="fa-solid fa-magnifying-glass" id="icon"></i>
-      </div>
-      <div class="menu-filter">
-        <button class="menu-btn active" data-filter="all">
-          <span class="emoji">🌟</span> All
-        </button>
-        <button class="menu-btn" data-filter="hot">
-          <span class="emoji">🔥</span> Hot Drinks
-        </button>
-        <button class="menu-btn" data-filter="cold">
-          <span class="emoji">❄️</span> Cold Drinks
-        </button>
-        <button class="menu-btn" data-filter="seasonal">
-          <span class="emoji">🍁</span> Seasonal
-        </button>
-      </div>
-
-      <div class="menu-wrapper">
-        <div class="menu-navigation">
-          <button class="menu-nav-btn prev">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="menu-nav-btn next">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-
-        <div class="menu-grid">
-          <div class="menu-slider">
-            <div class="menu-item" data-category="hot">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://rahicafe.com/wp-content/uploads/2020/09/masala-chai-adarakh-ki-chai-1.jpg"
-                    alt="Masala Chai" class="menu-image">
-                  <div class="trending-badge">🔥 Trending</div>
-                  <h3>Masala Chai</h3>
-                  <div class="price">₹80</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Masala Chai</h3>
-                  <p>Spiced Indian tea brewed with aromatic herbs and milk</p>
-                  <div class="tags">
-                    <span>#ChaiLover</span>
-                    <span>#MasalaChai</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="hot">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://en-media.thebetterindia.com/uploads/2024/10/filter-coffee-5-1727789534.jpg"
-                    alt="Filter Coffee" class="menu-image">
-                  <div class="trending-badge">✨ Fan Favorite</div>
-                  <h3>Filter Coffee</h3>
-                  <div class="price">₹90</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Filter Coffee</h3>
-                  <p>South Indian strong coffee served with frothy milk</p>
-                  <div class="tags">
-                    <span>#CoffeeLovers</span>
-                    <span>#SouthIndian</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="hot">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://i.pinimg.com/736x/d7/a9/c1/d7a9c1d7c6bb2a7aa3fd617262634364.jpg" alt="Elaichi Chai"
-                    class="menu-image">
-                  <h3>Cardamom Tea</h3>
-                  <div class="price">₹85</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Cardamom Tea</h3>
-                  <p>Fragrant cardamom-infused tea with a hint of sweetness</p>
-                  <div class="tags">
-                    <span>#Cardamom</span>
-                    <span>#ChaiTime</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="hot">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://cdn.loveandlemons.com/wp-content/uploads/2025/02/ginger-tea.jpg" alt="Ginger Tea"
-                    class="menu-image">
-                  <h3>Ginger Tea</h3>
-                  <div class="price">₹85</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Ginger Tea</h3>
-                  <p>Invigorating tea brewed with fresh ginger slices</p>
-                  <div class="tags">
-                    <span>#ImmunityBoost</span>
-                    <span>#ChaiTime</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="hot">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://i.pinimg.com/736x/d0/3a/2c/d03a2c38990f71595ae6296f95324f3b.jpg" alt="Kesar Milk"
-                    class="menu-image">
-                  <h3>Saffron Milk</h3>
-                  <div class="price">₹100</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Saffron Milk</h3>
-                  <p>Warm milk infused with saffron strands and dry fruits</p>
-                  <div class="tags">
-                    <span>#RoyalDrink</span>
-                    <span>#WinterSpecial</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="cold">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://frostingandfettuccine.com/wp-content/uploads/2022/12/Caramel-Iced-Coffee-6.jpg"
-                    alt="Cold Coffee" class="menu-image">
-                  <div class="trending-badge">✨ Fan Favorite</div>
-                  <h3>Cold Coffee</h3>
-                  <div class="price">₹120</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Cold Coffee</h3>
-                  <p>Chilled coffee blended with ice cream and chocolate syrup</p>
-                  <div class="tags">
-                    <span>#CoolBeans</span>
-                    <span>#SummerVibes</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="cold">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://vaya.in/recipes/wp-content/uploads/2018/09/Mango-lassi.jpg" alt="Mango Lassi"
-                    class="menu-image">
-                  <h3>Mango Lassi</h3>
-                  <div class="price">₹110</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Mango Lassi</h3>
-                  <p>Sweet and creamy yogurt-based mango drink</p>
-                  <div class="tags">
-                    <span>#MangoMania</span>
-                    <span>#DesiCooler</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="cold">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://www.shutterstock.com/image-photo/pink-moon-milk-glass-midnight-260nw-1914837412.jpg"
-                    alt="Rose Milk" class="menu-image">
-                  <h3>Rose Milk</h3>
-                  <div class="price">₹90</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Rose Milk</h3>
-                  <p>Chilled milk flavored with rose syrup and cardamom</p>
-                  <div class="tags">
-                    <span>#Refreshing</span>
-                    <span>#DesiTwist</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="seasonal">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img src="https://i.pinimg.com/736x/80/5c/d5/805cd51de318ab53b77247b1264fb0d4.jpg" alt="Thandai"
-                    class="menu-image">
-                  <h3>Thandai</h3>
-                  <div class="price">₹130</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Thandai</h3>
-                  <p>Holi special milk drink with nuts, spices, and rose petals</p>
-                  <div class="tags">
-                    <span>#FestiveFlavors</span>
-                    <span>#ChillVibe</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-item" data-category="seasonal">
-              <div class="menu-card">
-                <div class="menu-card-front">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjF6cep0FqVhQqYrfZ0CnyG6oH3iVe2gIknA&s"
-                    alt="Kulfi Shake" class="menu-image">
-                  <h3>Kulfi Shake</h3>
-                  <div class="price">₹140</div>
-                </div>
-                <div class="menu-card-back">
-                  <h3>Kulfi Shake</h3>
-                  <p>Creamy shake made with traditional kulfi and cardamom</p>
-                  <div class="tags">
-                    <span>#SummerSpecial</span>
-                    <span>#RichTaste</span>
-                  </div>
-                  <button class="order-btn">Add to Cart 🛒</button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="menu-progress">
-          <div class="menu-progress-bar"></div>
-        </div>
-
-        <div class="menu-dots"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="playlist-vibes" id="playlist-vibes">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text playlist-title">🎧 What We're Vibing To</h1>
-        <p class="reveal-text playlist-subtitle">The soundtrack of our coffee moments</p>
-      </div>
-
-      <div class="playlist-container">
-        <div class="spotify-embed">
-          <iframe src="https://open.spotify.com/embed/playlist/11nSleISOWGLboWVWPDuwB?utm_source=generator" width="100%"
-            height="380" frameborder="0" allowtransparency="true" allow="encrypted-media">
-          </iframe>
-        </div>
-
-        <div class="playlist-description">
-          <h3>Café Fusion Playlist</h3>
-          <p>A carefully curated mix of indie, lo-fi, and chill beats that perfectly complement your coffee experience.
-            From smooth jazz to acoustic vibes, this playlist is designed to elevate your mood and enhance your café
-            moments.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonial" id="testimonial">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text">What Our Customers Say</h1>
-        <p class="reveal-text">Discover what coffee lovers think about our premium coffee experience</p>
-      </div>
-
-      <div class="testimonial-slider swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
-              </div>
-              <div class="testimonial-author">
-                <img src="images/p1.png" alt="Sarah Johnson" class="author-image">
-                <div class="author-info">
-                  <h4>Sarah Johnson</h4>
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="testimonial-text">"Loved the French roast. Perfectly balanced and rich. Will order again!"</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
-              </div>
-              <div class="testimonial-author">
-                <img src="images/p2.png" alt="James Wilson" class="author-image">
-                <div class="author-info">
-                  <h4>James Wilson</h4>
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="testimonial-text">"Great espresso blend! Smooth and bold flavor. Fast shipping too!"</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
-              </div>
-              <div class="testimonial-author">
-                <img src="images/p3.png" alt="Michael Brown" class="author-image">
-                <div class="author-info">
-                  <h4>Michael Brown</h4>
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="testimonial-text">"Fantastic mocha flavor. Fresh and aromatic. Quick shipping!"</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
-              </div>
-              <div class="testimonial-author">
-                <img src="images/p4.png" alt="Emily Harris" class="author-image">
-                <div class="author-info">
-                  <h4>Emily Harris</h4>
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="testimonial-text">"Excellent quality! Fresh beans and quick delivery. Highly recommend."</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="testimonial-card">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
-              </div>
-              <div class="testimonial-author">
-                <img src="images/p5.png" alt="Anthony Thompson" class="author-image">
-                <div class="author-info">
-                  <h4>Anthony Thompson</h4>
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="testimonial-text">"Best decaf I've tried! Smooth and flavorful. Arrived promptly."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="gallery" id="gallery">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text">Our Gallery</h1>
-        <p class="reveal-text">Explore our coffee journey through moments captured in time</p>
-      </div>
-
-      <div class="gallery-filter">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="coffee">Coffee</button>
-        <button class="filter-btn" data-filter="ambiance">Ambiance</button>
-        <button class="filter-btn" data-filter="events">Events</button>
-      </div>
-
-      <div class="gallery-grid">
-        <div class="gallery-item" data-category="coffee">
-          <div class="gallery-card">
-            <img src="images/g1.png" alt="Coffee Art" class="gallery-image">
-            <div class="gallery-overlay">
-              <h3>Perfect Brew</h3>
-              <p>Our signature coffee preparation</p>
-              <span class="view-more">
-                <i class="fas fa-search-plus"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-category="ambiance">
-          <div class="gallery-card">
-            <img src="images/g2.png" alt="Cafe Interior" class="gallery-image">
-            <div class="gallery-overlay">
-              <h3>Cozy Corner</h3>
-              <p>Perfect spot for relaxation</p>
-              <span class="view-more">
-                <i class="fas fa-search-plus"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-category="events">
-          <div class="gallery-card">
-            <img src="images/g3.png" alt="Coffee Event" class="gallery-image">
-            <div class="gallery-overlay">
-              <h3>Coffee Workshop</h3>
-              <p>Learning the art of coffee</p>
-              <span class="view-more">
-                <i class="fas fa-search-plus"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-category="coffee">
-          <div class="gallery-card">
-            <img src="images/g4.png" alt="Coffee Beans" class="gallery-image">
-            <div class="gallery-overlay">
-              <h3>Premium Beans</h3>
-              <p>Carefully selected coffee beans</p>
-              <span class="view-more">
-                <i class="fas fa-search-plus"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-category="ambiance">
-          <div class="gallery-card">
-            <img src="images/g5.png" alt="Cafe Atmosphere" class="gallery-image">
-            <div class="gallery-overlay">
-              <h3>Modern Space</h3>
-              <p>Contemporary cafe design</p>
-              <span class="view-more">
-                <i class="fas fa-search-plus"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-category="events">
-          <div class="gallery-card">
-            <img src="images/g6.png" alt="Coffee Tasting" class="gallery-image">
-            <div class="gallery-overlay">
-              <h3>Tasting Session</h3>
-              <p>Exploring coffee flavors</p>
-              <span class="view-more">
-                <i class="fas fa-search-plus"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lightbox" id="lightbox">
-      <span class="close-lightbox">×</span>
-      <img src="" alt="" class="lightbox-image">
-      <div class="lightbox-caption">
-        <h3></h3>
-        <p></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <div class="section-container">
-      <div class="section-head">
-        <h1 class="reveal-text">📞 Connect with Café Fusion</h1>
-        <p class="reveal-text">Let's brew something amazing together!</p>
-      </div>
-
-      <div class="contact-container">
-        <div class="contact-info">
-          <div class="contact-details">
-            <div class="contact-card">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-text">
-                <h4>Our Café</h4>
-                <p>Café Fusion, 42 Hauz Khas Village, New Delhi, Delhi 110016, India</p>
-              </div>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <div class="contact-text">
-                <h4>Call Us</h4>
-                <p>+91 (011) 4567-8901</p>
-              </div>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-text">
-                <h4>Email</h4>
-                <p>hello@cafefusion.in</p>
-              </div>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-icon">
-                <i class="fas fa-clock"></i>
-              </div>
-              <div class="contact-text">
-                <h4>Hours</h4>
-                <p>Mon-Sun: 8:00 AM - 11:00 PM</p>
-              </div>
-            </div>
-
-            <div class="contact-social">
-              <h4>Follow Our Vibe</h4>
-              <div class="social-links">
-                <a href="https://www.instagram.com" target="_blank" class="social-icon"><i
-                    class="fab fa-instagram"></i></a>
-                <a href="https://www.twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.facebook.com" target="_blank" class="social-icon"><i
-                    class="fab fa-facebook"></i></a>
-                <a href="https://www.zomato.com" target="_blank" class="social-icon"><i class="fas fa-utensils"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-form-wrapper">
-          <form class="contact-form" id="contact-form">
+        <div class="recommender-wrapper">
+          <form class="recommender-form" id="recommender-form">
             <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required placeholder="What should we call you?">
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required placeholder="Your digital postcard">
-            </div>
-
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select id="subject" name="subject">
-                <option value="">Choose a vibe</option>
-                <option value="general">General Inquiry</option>
-                <option value="feedback">Feedback</option>
-                <option value="catering">Catering</option>
-                <option value="events">Events</option>
+              <label for="ai-mood">How are you feeling right now?</label>
+              <select id="ai-mood" name="mood">
+                <option value="happy">😄 Happy & Energetic</option>
+                <option value="tired">😴 Tired & Need a boost</option>
+                <option value="relaxed">😌 Relaxed & Chilling</option>
+                <option value="adventurous">🧐 Feeling Adventurous</option>
+                <option value="focused">💻 Need to focus</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="message">Your Message</label>
-              <textarea id="message" name="message" required placeholder="Spill the tea (or coffee)"></textarea>
+              <label for="ai-energy">What's your desired energy level?</label>
+              <select id="ai-energy" name="energy">
+                <option value="low">Caffeine-free</option>
+                <option value="medium">A gentle lift</option>
+                <option value="high">Maximum power!</option>
+              </select>
             </div>
 
-            <button type="submit" class="submit-btn">
-              <span>Send Message</span>
-              <i class="fas fa-paper-plane"></i>
+            <div class="form-group">
+              <label for="ai-flavor">What flavor profile do you crave?</label>
+              <select id="ai-flavor" name="flavor">
+                <option value="sweet">
+                  Sweet & Creamy (e.g., Mocha, Lassi)
+                </option>
+                <option value="strong">
+                  Strong & Bold (e.g., Espresso, Filter Coffee)
+                </option>
+                <option value="spiced">
+                  Spiced & Aromatic (e.g., Masala Chai)
+                </option>
+                <option value="fruity">
+                  Fruity & Refreshing (e.g., Iced Teas)
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="ai-temp">Hot or Cold?</label>
+              <select id="ai-temp" name="temp">
+                <option value="any">No preference</option>
+                <option value="hot">🔥 Hot</option>
+                <option value="cold">❄️ Cold</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              class="submit-btn"
+              id="get-recommendation-btn"
+            >
+              <span>Find My Brew</span>
+              <i class="fas fa-magic"></i>
             </button>
           </form>
+
+          <div class="recommendation-result" id="recommendation-result">
+            <div class="placeholder-text">
+              <i class="fas fa-mug-hot"></i>
+              <p>Your perfect match will appear here...</p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section id="mood-quiz" class="mood-quiz-section">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text">Brew Your Mood Quiz</h1>
+          <p class="reveal-text">Find the drink that matches your vibe today</p>
+        </div>
+
+        <div class="quiz-box">
+          <h2 id="quiz-question" class="quiz-question">Loading question...</h2>
+
+          <div id="quiz-options" class="quiz-options"></div>
+
+          <div id="quiz-result" class="quiz-result hidden">
+            <h2>Your Perfect Brew Is:</h2>
+            <p id="quiz-drink" class="quiz-drink"></p>
+
+            <button id="quiz-restart" class="quiz-restart-btn">
+              Brew another mood?
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="special-offers" id="special-offers">
+      <h2 class="section-title">Special Event/Seasonal Offers</h2>
+      <div class="offers-container">
+        <div class="offer-item" id="diwali-offer">
+          <img src="images/diwali.png" alt="Diwali Offer" class="offer-image" />
+          <h3 class="offer-title">Diwali Special</h3>
+          <p class="offer-description">
+            Celebrate Diwali with 20% off on our exclusive products!
+          </p>
+        </div>
+        <div class="offer-item" id="christmas-offer">
+          <img
+            src="images/christmas.png"
+            alt="Christmas Offer"
+            class="offer-image"
+          />
+          <h3 class="offer-title">Christmas Special</h3>
+          <p class="offer-description">
+            Enjoy Christmas with a 25% discount on all items!
+          </p>
+        </div>
+        <div class="offer-item" id="newyear-offer">
+          <img
+            src="images/newyear.png"
+            alt="New Year Offer"
+            class="offer-image"
+          />
+          <h3 class="offer-title">New Year's Offer</h3>
+          <p class="offer-description">
+            Ring in the new year with a flat 30% discount!
+          </p>
+        </div>
+        <div class="offer-item" id="holi-offer">
+          <img src="images/holi.png" alt="Holi Offer" class="offer-image" />
+          <h3 class="offer-title">Holi Special</h3>
+          <p class="offer-description">
+            Celebrate Holi with 15% off on colorful products!
+          </p>
+        </div>
+        <div class="offer-item" id="rakhi-offer">
+          <img
+            src="images/rakhi.png"
+            alt="Raksha Bandhan Offer"
+            class="offer-image"
+          />
+          <h3 class="offer-title">Raksha Bandhan Special</h3>
+          <p class="offer-description">
+            Surprise your siblings with a special Rakhi discount of 10%!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text">Our Vibe Menu</h1>
+          <p class="reveal-text">✨ Discover your next favorite drink ✨</p>
+        </div>
+        <div class="search-menu">
+          <input type="search" id="searchMenu" placeholder="Enter Your Dish" />
+          <i class="fa-solid fa-magnifying-glass" id="icon"></i>
+        </div>
+        <div class="menu-filter">
+          <button class="menu-btn active" data-filter="all">
+            <span class="emoji">🌟</span> All
+          </button>
+          <button class="menu-btn" data-filter="hot">
+            <span class="emoji">🔥</span> Hot Drinks
+          </button>
+          <button class="menu-btn" data-filter="cold">
+            <span class="emoji">❄️</span> Cold Drinks
+          </button>
+          <button class="menu-btn" data-filter="seasonal">
+            <span class="emoji">🍁</span> Seasonal
+          </button>
+        </div>
+
+        <div class="menu-wrapper">
+          <div class="menu-navigation">
+            <button class="menu-nav-btn prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="menu-nav-btn next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="menu-grid">
+            <div class="menu-slider">
+              <div class="menu-item" data-category="hot">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://rahicafe.com/wp-content/uploads/2020/09/masala-chai-adarakh-ki-chai-1.jpg"
+                      alt="Masala Chai"
+                      class="menu-image"
+                    />
+                    <div class="trending-badge">🔥 Trending</div>
+                    <h3>Masala Chai</h3>
+                    <div class="price">₹80</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Masala Chai</h3>
+                    <p>Spiced Indian tea brewed with aromatic herbs and milk</p>
+                    <div class="tags">
+                      <span>#ChaiLover</span>
+                      <span>#MasalaChai</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="hot">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://en-media.thebetterindia.com/uploads/2024/10/filter-coffee-5-1727789534.jpg"
+                      alt="Filter Coffee"
+                      class="menu-image"
+                    />
+                    <div class="trending-badge">✨ Fan Favorite</div>
+                    <h3>Filter Coffee</h3>
+                    <div class="price">₹90</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Filter Coffee</h3>
+                    <p>South Indian strong coffee served with frothy milk</p>
+                    <div class="tags">
+                      <span>#CoffeeLovers</span>
+                      <span>#SouthIndian</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="hot">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://i.pinimg.com/736x/d7/a9/c1/d7a9c1d7c6bb2a7aa3fd617262634364.jpg"
+                      alt="Elaichi Chai"
+                      class="menu-image"
+                    />
+                    <h3>Cardamom Tea</h3>
+                    <div class="price">₹85</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Cardamom Tea</h3>
+                    <p>
+                      Fragrant cardamom-infused tea with a hint of sweetness
+                    </p>
+                    <div class="tags">
+                      <span>#Cardamom</span>
+                      <span>#ChaiTime</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="hot">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://cdn.loveandlemons.com/wp-content/uploads/2025/02/ginger-tea.jpg"
+                      alt="Ginger Tea"
+                      class="menu-image"
+                    />
+                    <h3>Ginger Tea</h3>
+                    <div class="price">₹85</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Ginger Tea</h3>
+                    <p>Invigorating tea brewed with fresh ginger slices</p>
+                    <div class="tags">
+                      <span>#ImmunityBoost</span>
+                      <span>#ChaiTime</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="hot">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://i.pinimg.com/736x/d0/3a/2c/d03a2c38990f71595ae6296f95324f3b.jpg"
+                      alt="Kesar Milk"
+                      class="menu-image"
+                    />
+                    <h3>Saffron Milk</h3>
+                    <div class="price">₹100</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Saffron Milk</h3>
+                    <p>Warm milk infused with saffron strands and dry fruits</p>
+                    <div class="tags">
+                      <span>#RoyalDrink</span>
+                      <span>#WinterSpecial</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="cold">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://frostingandfettuccine.com/wp-content/uploads/2022/12/Caramel-Iced-Coffee-6.jpg"
+                      alt="Cold Coffee"
+                      class="menu-image"
+                    />
+                    <div class="trending-badge">✨ Fan Favorite</div>
+                    <h3>Cold Coffee</h3>
+                    <div class="price">₹120</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Cold Coffee</h3>
+                    <p>
+                      Chilled coffee blended with ice cream and chocolate syrup
+                    </p>
+                    <div class="tags">
+                      <span>#CoolBeans</span>
+                      <span>#SummerVibes</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="cold">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://vaya.in/recipes/wp-content/uploads/2018/09/Mango-lassi.jpg"
+                      alt="Mango Lassi"
+                      class="menu-image"
+                    />
+                    <h3>Mango Lassi</h3>
+                    <div class="price">₹110</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Mango Lassi</h3>
+                    <p>Sweet and creamy yogurt-based mango drink</p>
+                    <div class="tags">
+                      <span>#MangoMania</span>
+                      <span>#DesiCooler</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="cold">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://www.shutterstock.com/image-photo/pink-moon-milk-glass-midnight-260nw-1914837412.jpg"
+                      alt="Rose Milk"
+                      class="menu-image"
+                    />
+                    <h3>Rose Milk</h3>
+                    <div class="price">₹90</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Rose Milk</h3>
+                    <p>Chilled milk flavored with rose syrup and cardamom</p>
+                    <div class="tags">
+                      <span>#Refreshing</span>
+                      <span>#DesiTwist</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="seasonal">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://i.pinimg.com/736x/80/5c/d5/805cd51de318ab53b77247b1264fb0d4.jpg"
+                      alt="Thandai"
+                      class="menu-image"
+                    />
+                    <h3>Thandai</h3>
+                    <div class="price">₹130</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Thandai</h3>
+                    <p>
+                      Holi special milk drink with nuts, spices, and rose petals
+                    </p>
+                    <div class="tags">
+                      <span>#FestiveFlavors</span>
+                      <span>#ChillVibe</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="menu-item" data-category="seasonal">
+                <div class="menu-card">
+                  <div class="menu-card-front">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjF6cep0FqVhQqYrfZ0CnyG6oH3iVe2gIknA&s"
+                      alt="Kulfi Shake"
+                      class="menu-image"
+                    />
+                    <h3>Kulfi Shake</h3>
+                    <div class="price">₹140</div>
+                  </div>
+                  <div class="menu-card-back">
+                    <h3>Kulfi Shake</h3>
+                    <p>Creamy shake made with traditional kulfi and cardamom</p>
+                    <div class="tags">
+                      <span>#SummerSpecial</span>
+                      <span>#RichTaste</span>
+                    </div>
+                    <button class="order-btn">Add to Cart 🛒</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-progress">
+            <div class="menu-progress-bar"></div>
+          </div>
+
+          <div class="menu-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="playlist-vibes" id="playlist-vibes">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text playlist-title">🎧 What We're Vibing To</h1>
+          <p class="reveal-text playlist-subtitle">
+            The soundtrack of our coffee moments
+          </p>
+        </div>
+
+        <div class="playlist-container">
+          <div class="spotify-embed">
+            <iframe
+              src="https://open.spotify.com/embed/playlist/11nSleISOWGLboWVWPDuwB?utm_source=generator"
+              width="100%"
+              height="380"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            >
+            </iframe>
+          </div>
+
+          <div class="playlist-description">
+            <h3>Café Fusion Playlist</h3>
+            <p>
+              A carefully curated mix of indie, lo-fi, and chill beats that
+              perfectly complement your coffee experience. From smooth jazz to
+              acoustic vibes, this playlist is designed to elevate your mood and
+              enhance your café moments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial" id="testimonial">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text">What Our Customers Say</h1>
+          <p class="reveal-text">
+            Discover what coffee lovers think about our premium coffee
+            experience
+          </p>
+        </div>
+
+        <div class="testimonial-slider swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="images/p1.png"
+                    alt="Sarah Johnson"
+                    class="author-image"
+                  />
+                  <div class="author-info">
+                    <h4>Sarah Johnson</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Loved the French roast. Perfectly balanced and rich. Will
+                  order again!"
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="images/p2.png"
+                    alt="James Wilson"
+                    class="author-image"
+                  />
+                  <div class="author-info">
+                    <h4>James Wilson</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Great espresso blend! Smooth and bold flavor. Fast shipping
+                  too!"
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="images/p3.png"
+                    alt="Michael Brown"
+                    class="author-image"
+                  />
+                  <div class="author-info">
+                    <h4>Michael Brown</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Fantastic mocha flavor. Fresh and aromatic. Quick shipping!"
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="images/p4.png"
+                    alt="Emily Harris"
+                    class="author-image"
+                  />
+                  <div class="author-info">
+                    <h4>Emily Harris</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Excellent quality! Fresh beans and quick delivery. Highly
+                  recommend."
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="testimonial-author">
+                  <img
+                    src="images/p5.png"
+                    alt="Anthony Thompson"
+                    class="author-image"
+                  />
+                  <div class="author-info">
+                    <h4>Anthony Thompson</h4>
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Best decaf I've tried! Smooth and flavorful. Arrived
+                  promptly."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text">Our Gallery</h1>
+          <p class="reveal-text">
+            Explore our coffee journey through moments captured in time
+          </p>
+        </div>
+
+        <div class="gallery-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="coffee">Coffee</button>
+          <button class="filter-btn" data-filter="ambiance">Ambiance</button>
+          <button class="filter-btn" data-filter="events">Events</button>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" data-category="coffee">
+            <div class="gallery-card">
+              <img src="images/g1.png" alt="Coffee Art" class="gallery-image" />
+              <div class="gallery-overlay">
+                <h3>Perfect Brew</h3>
+                <p>Our signature coffee preparation</p>
+                <span class="view-more">
+                  <i class="fas fa-search-plus"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="ambiance">
+            <div class="gallery-card">
+              <img
+                src="images/g2.png"
+                alt="Cafe Interior"
+                class="gallery-image"
+              />
+              <div class="gallery-overlay">
+                <h3>Cozy Corner</h3>
+                <p>Perfect spot for relaxation</p>
+                <span class="view-more">
+                  <i class="fas fa-search-plus"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="events">
+            <div class="gallery-card">
+              <img
+                src="images/g3.png"
+                alt="Coffee Event"
+                class="gallery-image"
+              />
+              <div class="gallery-overlay">
+                <h3>Coffee Workshop</h3>
+                <p>Learning the art of coffee</p>
+                <span class="view-more">
+                  <i class="fas fa-search-plus"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="coffee">
+            <div class="gallery-card">
+              <img
+                src="images/g4.png"
+                alt="Coffee Beans"
+                class="gallery-image"
+              />
+              <div class="gallery-overlay">
+                <h3>Premium Beans</h3>
+                <p>Carefully selected coffee beans</p>
+                <span class="view-more">
+                  <i class="fas fa-search-plus"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="ambiance">
+            <div class="gallery-card">
+              <img
+                src="images/g5.png"
+                alt="Cafe Atmosphere"
+                class="gallery-image"
+              />
+              <div class="gallery-overlay">
+                <h3>Modern Space</h3>
+                <p>Contemporary cafe design</p>
+                <span class="view-more">
+                  <i class="fas fa-search-plus"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="events">
+            <div class="gallery-card">
+              <img
+                src="images/g6.png"
+                alt="Coffee Tasting"
+                class="gallery-image"
+              />
+              <div class="gallery-overlay">
+                <h3>Tasting Session</h3>
+                <p>Exploring coffee flavors</p>
+                <span class="view-more">
+                  <i class="fas fa-search-plus"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">×</span>
+        <img src="" alt="" class="lightbox-image" />
+        <div class="lightbox-caption">
+          <h3></h3>
+          <p></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="section-container">
+        <div class="section-head">
+          <h1 class="reveal-text">📞 Connect with Café Fusion</h1>
+          <p class="reveal-text">Let's brew something amazing together!</p>
+        </div>
+
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-details">
+              <div class="contact-card">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Our Café</h4>
+                  <p>
+                    Café Fusion, 42 Hauz Khas Village, New Delhi, Delhi 110016,
+                    India
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Call Us</h4>
+                  <p>+91 (011) 4567-8901</p>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <p>hello@cafefusion.in</p>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Hours</h4>
+                  <p>Mon-Sun: 8:00 AM - 11:00 PM</p>
+                </div>
+              </div>
+
+              <div class="contact-social">
+                <h4>Follow Our Vibe</h4>
+                <div class="social-links">
+                  <a
+                    href="https://www.instagram.com"
+                    target="_blank"
+                    class="social-icon"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a
+                    href="https://www.twitter.com"
+                    target="_blank"
+                    class="social-icon"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    class="social-icon"
+                    ><i class="fab fa-facebook"></i
+                  ></a>
+                  <a
+                    href="https://www.zomato.com"
+                    target="_blank"
+                    class="social-icon"
+                    ><i class="fas fa-utensils"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper">
+            <form class="contact-form" id="contact-form">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="What should we call you?"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="Your digital postcard"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject">
+                  <option value="">Choose a vibe</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="catering">Catering</option>
+                  <option value="events">Events</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  placeholder="Spill the tea (or coffee)"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">
+                <span>Send Message</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
 
       <div class="contact-map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.555984455474!2d77.19644431499999!3d28.535516482000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1927f3f3f3f3%3A0x6dabf5b1f2a3f3f3!2sCaf%C3%A9%20Fusion%2C%2042%20Hauz%20Khas%20Village%2C%20Hauz%20Khas%2C%20New%20Delhi%2C%20Delhi%20110016!5e0!3m2!1sen!2sin!4v1669981111157!5m2!1sen!2sin"
           width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
         </iframe>
+      </div>
+    </div>
+  </section>
+  <section class="virtual-tour" id="virtual-tour">
+    <div class="section-container">
+      <div class="section-head">
+        <h1 class="reveal-text">Step Inside The Vibe</h1>
+        <p class="reveal-text">Experience our ambiance virtually before you visit.</p>
+      </div>
+
+      <div class="tour-wrapper reveal-text">
+        <div class="tour-frame-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!4v1550915043882!6m8!1m7!1sCAoSLEFGMVFpcE9XWlFwX2xQbW1sX1lMcWxQbW1sX1lMcWxQbW1sX1lMcWxQbW1sX1lM!2m2!1d40.7413582!2d-74.0046499!3f254.05!4f-11.44!5f0.7820865974627469" 
+            width="100%" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="tour-overlay-hint">
+          <i class="fas fa-hand-pointer"></i>
+          <span>Drag to look around</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1010,112 +1373,150 @@
           <p class="plan-description">Receive freshly roasted coffee beans every week.</p>
           <button class="button subscribe-button">Subscribe Now</button>
         </div>
-
-        <div class="subscription-plan">
-          <h3 class="plan-title">Monthly Subscription</h3>
-          <p class="plan-price">₹999 / month</p>
-          <p class="plan-description">Get special brews delivered to your doorstep every month.</p>
-          <button class="button subscribe-button">Subscribe Now</button>
-        </div>
-
-        <div class="subscription-plan">
-          <h3 class="plan-title">Yearly Subscription</h3>
-          <p class="plan-price">₹11,499 / year (Save 20%)</p>
-          <p class="plan-description">Enjoy fresh coffee all year long with an exclusive discount!</p>
-          <button class="button subscribe-button">Subscribe Now</button>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="https://i.pinimg.com/736x/39/3b/b1/393bb1bb15940aea508dd07c5da23917.jpg" alt="Café Fusion Logo" class="footer-logo">
-          <p class="footer-tagline">Where Coffee Meets Culture</p>
-          <div class="footer-social-links">
-            <a href="https://www.instagram.com/cafefusion_india" target="_blank" class="social-icon"><i
-                class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/cafefusion.india" target="_blank" class="social-icon"><i
-                class="fab fa-facebook"></i></a>
-            <a href="https://www.twitter.com/cafefusion_in" target="_blank" class="social-icon"><i
-                class="fab fa-twitter"></i></a>
-            <a href="https://www.zomato.com/cafefusion" target="_blank" class="social-icon"><i
-                class="fas fa-utensils"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#menu">Our Menu</a></li>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#subscription">Subscription</a></li>
-            </ul>
+    <section class="subscription" id="subscription">
+      <h2 class="section-title">Subscription Plans</h2>
+      <div class="section-container">
+        <div class="subscription-container">
+          <div class="subscription-plan">
+            <h3 class="plan-title">Weekly Subscription</h3>
+            <p class="plan-price">₹299 / week</p>
+            <p class="plan-description">
+              Receive freshly roasted coffee beans every week.
+            </p>
+            <button class="button subscribe-button">Subscribe Now</button>
           </div>
 
-          <div class="footer-column">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="#order-tracking">Order Tracking</a></li>
-              <li><a href="#">Catering</a></li>
-              <li><a href="#">Franchise</a></li>
-              <li><a href="#">Gift Cards</a></li>
-              <li><a href="#">Corporate Offers</a></li>
-            </ul>
+          <div class="subscription-plan">
+            <h3 class="plan-title">Monthly Subscription</h3>
+            <p class="plan-price">₹999 / month</p>
+            <p class="plan-description">
+              Get special brews delivered to your doorstep every month.
+            </p>
+            <button class="button subscribe-button">Subscribe Now</button>
           </div>
 
-          <div class="footer-column">
-            <h4>Support</h4>
-            <ul>
-              <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Refund Policy</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-newsletter">
-          <h4>Stay Brewing with Us</h4>
-          <p>Subscribe to our newsletter for exclusive offers and updates</p>
-          <form class="newsletter-form" id="newsletter-form">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-          <div class="newsletter-disclaimer">
-            By subscribing, you agree to our <a href="#">Privacy Policy</a>
+          <div class="subscription-plan">
+            <h3 class="plan-title">Yearly Subscription</h3>
+            <p class="plan-price">₹11,499 / year (Save 20%)</p>
+            <p class="plan-description">
+              Enjoy fresh coffee all year long with an exclusive discount!
+            </p>
+            <button class="button subscribe-button">Subscribe Now</button>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="footer-bottom">
-        <div class="footer-legal">
-          <p>© 2025 Café Fusion. All Rights Reserved.</p>
-          <div class="footer-payments">
-            <i class="fab fa-cc-visa"></i>
-            <i class="fab fa-cc-mastercard"></i>
-            <i class="fab fa-cc-paypal"></i>
-            <i class="fab fa-google-pay"></i>
-            <i class="fab fa-apple-pay"></i>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img
+              src="https://i.pinimg.com/736x/39/3b/b1/393bb1bb15940aea508dd07c5da23917.jpg"
+              alt="Café Fusion Logo"
+              class="footer-logo"
+            />
+            <p class="footer-tagline">Where Coffee Meets Culture</p>
+            <div class="footer-social-links">
+              <a
+                href="https://www.instagram.com/cafefusion_india"
+                target="_blank"
+                class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.facebook.com/cafefusion.india"
+                target="_blank"
+                class="social-icon"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="https://www.twitter.com/cafefusion_in"
+                target="_blank"
+                class="social-icon"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.zomato.com/cafefusion"
+                target="_blank"
+                class="social-icon"
+                ><i class="fas fa-utensils"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Our Menu</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#subscription">Subscription</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="#order-tracking">Order Tracking</a></li>
+                <li><a href="#">Catering</a></li>
+                <li><a href="#">Franchise</a></li>
+                <li><a href="#">Gift Cards</a></li>
+                <li><a href="#">Corporate Offers</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h4>Support</h4>
+              <ul>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Refund Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-newsletter">
+            <h4>Stay Brewing with Us</h4>
+            <p>Subscribe to our newsletter for exclusive offers and updates</p>
+            <form class="newsletter-form" id="newsletter-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+            <div class="newsletter-disclaimer">
+              By subscribing, you agree to our <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <p>© 2025 Café Fusion. All Rights Reserved.</p>
+            <div class="footer-payments">
+              <i class="fab fa-cc-visa"></i>
+              <i class="fab fa-cc-mastercard"></i>
+              <i class="fab fa-cc-paypal"></i>
+              <i class="fab fa-google-pay"></i>
+              <i class="fab fa-apple-pay"></i>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <div class="love-badge">Made With ❤️</div>
+    <div class="love-badge">Made With ❤️</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
