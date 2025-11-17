@@ -1839,3 +1839,48 @@ if (restartQuizBtn) {
     loadQuizQuestion();
   };
 }
+// 3D rotation effect for menu cards
+document.querySelectorAll('.menu-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; 
+    const y = e.clientY - rect.top; 
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10; 
+    const rotateY = (centerX - x) / 10;
+    
+    card.style.transform = `
+      perspective(1500px) 
+      rotateX(${rotateX}deg) 
+      rotateY(${rotateY}deg) 
+      scale3d(1.05, 1.05, 1.05)
+    `;
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1500px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+  });
+});
+
+const themeBtn = document.getElementById('theme-btn');
+const themeDropdown = document.querySelector('.theme-dropdown');
+
+if (themeBtn) {
+  themeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    
+    // Only toggle on mobile
+    if (window.innerWidth <= 992) {
+      themeDropdown.classList.toggle('active');
+    }
+  });
+  
+  document.addEventListener('click', (e) => {
+    if (!themeDropdown.contains(e.target)) {
+      themeDropdown.classList.remove('active');
+    }
+  });
+}
